@@ -91,6 +91,7 @@
     <Content Include="img\icons\ic_add_circle_black_48dp.png" />
     <Content Include="img\icons\ic_arrow_back_black_24dp.png" />
     <Content Include="img\icons\ic_arrow_back_white_24dp.png" />
+    <Content Include="img\icons\ic_arrow_forward_white_24dp.png" />
     <Content Include="img\icons\ic_clear_all_black_24dp.png" />
     <Content Include="img\icons\ic_close_black_24dp.png" />
     <Content Include="img\icons\ic_close_white_24dp.png" />

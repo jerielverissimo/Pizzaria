@@ -29,9 +29,6 @@ namespace Pizzaria
             
         }
         
-
-        
-
         
         ///     
         /// Eventos
@@ -230,6 +227,16 @@ namespace Pizzaria
             }
         }
 
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            txtSearch.BackColor = ColorTranslator.FromHtml("#BCAAA4");
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            txtSearch.BackColor = ColorTranslator.FromHtml("#A1887F");
+        }
+
         private void ptbSearch_Click(object sender, EventArgs e)
         {
             tmSearch.Enabled = true;
@@ -265,6 +272,9 @@ namespace Pizzaria
             panSearch.BackColor = ColorTranslator.FromHtml("#795548");
             txtSearch.BackColor = ColorTranslator.FromHtml("#8d6e63");
             panAlert.BackColor = ColorTranslator.FromHtml("#f44336");
+            txtSearch.ForeColor = ColorTranslator.FromHtml("#795548");
+            btnSearch.BackColor = ColorTranslator.FromHtml("#A1887F");
+
             panAlert.Left = (panOrder.Size.Width - panAlert.Size.Width) / 2;
             lblAlert.Text = panAlert.Left.ToString();
 
