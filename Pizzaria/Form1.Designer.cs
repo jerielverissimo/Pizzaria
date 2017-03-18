@@ -28,29 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panTitleBar = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panPrincipal = new System.Windows.Forms.Panel();
             this.panActionBar = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.panSideBar = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.ptbMenu = new System.Windows.Forms.PictureBox();
             this.ptbMini = new System.Windows.Forms.PictureBox();
             this.ptbMaxiRest = new System.Windows.Forms.PictureBox();
             this.ptbClose = new System.Windows.Forms.PictureBox();
-            this.panUser = new System.Windows.Forms.Panel();
-            this.lblUser = new System.Windows.Forms.Label();
+            this.tmMenuSide = new System.Windows.Forms.Timer(this.components);
             this.panTitleBar.SuspendLayout();
             this.panPrincipal.SuspendLayout();
             this.panActionBar.SuspendLayout();
             this.panSideBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbClose)).BeginInit();
-            this.panUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // panTitleBar
@@ -97,7 +96,7 @@
             // 
             this.panActionBar.BackColor = System.Drawing.Color.Gold;
             this.panActionBar.Controls.Add(this.ptbMenu);
-            this.panActionBar.Controls.Add(this.label1);
+            this.panActionBar.Controls.Add(this.lblTitulo);
             this.panActionBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panActionBar.Location = new System.Drawing.Point(0, 0);
             this.panActionBar.Margin = new System.Windows.Forms.Padding(0);
@@ -105,21 +104,22 @@
             this.panActionBar.Size = new System.Drawing.Size(784, 75);
             this.panActionBar.TabIndex = 0;
             // 
-            // label1
+            // lblTitulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(60, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Pizzaria C#";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(81, 25);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(134, 29);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Pizzaria C#";
             // 
             // panSideBar
             // 
             this.panSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panSideBar.Controls.Add(this.panUser);
+            this.panSideBar.Controls.Add(this.lblStock);
+            this.panSideBar.Controls.Add(this.lblUser);
             this.panSideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panSideBar.Location = new System.Drawing.Point(0, 75);
             this.panSideBar.Margin = new System.Windows.Forms.Padding(0);
@@ -127,15 +127,41 @@
             this.panSideBar.Size = new System.Drawing.Size(250, 462);
             this.panSideBar.TabIndex = 1;
             // 
-            // pictureBox1
+            // lblStock
             // 
-            this.pictureBox1.Image = global::Pizzaria.Properties.Resources.ic_account_circle_white_48dp;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.lblStock.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblStock.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStock.ForeColor = System.Drawing.Color.White;
+            this.lblStock.Image = global::Pizzaria.Properties.Resources.stocking_1_;
+            this.lblStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblStock.Location = new System.Drawing.Point(0, 75);
+            this.lblStock.Margin = new System.Windows.Forms.Padding(0);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblStock.Size = new System.Drawing.Size(250, 75);
+            this.lblStock.TabIndex = 5;
+            this.lblStock.Text = "Estoque";
+            this.lblStock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStock.MouseEnter += new System.EventHandler(this.lblStock_MouseEnter);
+            this.lblStock.MouseLeave += new System.EventHandler(this.lblStock_MouseLeave);
+            // 
+            // lblUser
+            // 
+            this.lblUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblUser.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.ForeColor = System.Drawing.Color.White;
+            this.lblUser.Image = global::Pizzaria.Properties.Resources.ic_account_circle_white_48dp;
+            this.lblUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUser.Location = new System.Drawing.Point(0, 0);
+            this.lblUser.Margin = new System.Windows.Forms.Padding(0);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblUser.Size = new System.Drawing.Size(250, 75);
+            this.lblUser.TabIndex = 4;
+            this.lblUser.Text = "Usuário";
+            this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblUser.MouseEnter += new System.EventHandler(this.lblUser_MouseEnter);
+            this.lblUser.MouseLeave += new System.EventHandler(this.lblUser_MouseLeave);
             // 
             // ptbMenu
             // 
@@ -146,6 +172,7 @@
             this.ptbMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ptbMenu.TabIndex = 1;
             this.ptbMenu.TabStop = false;
+            this.ptbMenu.Click += new System.EventHandler(this.ptbMenu_Click);
             // 
             // ptbMini
             // 
@@ -182,27 +209,10 @@
             this.ptbClose.TabStop = false;
             this.ptbClose.Click += new System.EventHandler(this.ptbClose_Click);
             // 
-            // panUser
+            // tmMenuSide
             // 
-            this.panUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panUser.Controls.Add(this.lblUser);
-            this.panUser.Controls.Add(this.pictureBox1);
-            this.panUser.Location = new System.Drawing.Point(0, 0);
-            this.panUser.Margin = new System.Windows.Forms.Padding(0);
-            this.panUser.Name = "panUser";
-            this.panUser.Size = new System.Drawing.Size(250, 75);
-            this.panUser.TabIndex = 2;
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(94, 25);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(85, 25);
-            this.lblUser.TabIndex = 2;
-            this.lblUser.Text = "Usuario";
+            this.tmMenuSide.Interval = 1;
+            this.tmMenuSide.Tick += new System.EventHandler(this.tmMenuSide_Tick);
             // 
             // frmPrincipal
             // 
@@ -221,13 +231,10 @@
             this.panActionBar.ResumeLayout(false);
             this.panActionBar.PerformLayout();
             this.panSideBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbClose)).EndInit();
-            this.panUser.ResumeLayout(false);
-            this.panUser.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -238,15 +245,15 @@
         private System.Windows.Forms.Panel panPrincipal;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panActionBar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox ptbMenu;
         private System.Windows.Forms.PictureBox ptbClose;
         private System.Windows.Forms.PictureBox ptbMaxiRest;
         private System.Windows.Forms.PictureBox ptbMini;
         private System.Windows.Forms.Panel panSideBar;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panUser;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.Timer tmMenuSide;
     }
 }
 

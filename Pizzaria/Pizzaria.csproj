@@ -87,6 +87,7 @@
     <Content Include="img\icons\ic_account_circle_white_36dp.png" />
     <Content Include="img\icons\ic_account_circle_white_48dp.png" />
     <Content Include="img\icons\ic_arrow_back_black_24dp.png" />
+    <Content Include="img\icons\ic_arrow_back_white_24dp.png" />
     <Content Include="img\icons\ic_close_black_24dp.png" />
     <Content Include="img\icons\ic_close_white_24dp.png" />
     <Content Include="img\icons\ic_fullscreen_black_24dp.png" />
@@ -95,6 +96,7 @@
     <Content Include="img\icons\ic_fullscreen_white_24dp.png" />
     <Content Include="img\icons\ic_menu_black_24dp.png" />
     <Content Include="img\icons\ic_menu_white_24dp.png" />
+    <Content Include="img\icons\stocking%281%29.png" />
     <Content Include="img\icons\window-close.png" />
     <Content Include="img\icons\window-maximize.png" />
     <Content Include="img\icons\window-maximize_balck.png" />

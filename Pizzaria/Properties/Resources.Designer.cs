@@ -83,6 +83,16 @@ namespace Pizzaria.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_arrow_back_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_arrow_back_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_close_black_24dp {
             get {
                 object obj = ResourceManager.GetObject("ic_close_black_24dp", resourceCulture);
@@ -156,6 +166,16 @@ namespace Pizzaria.Properties {
         internal static System.Drawing.Bitmap ic_menu_white_24dp {
             get {
                 object obj = ResourceManager.GetObject("ic_menu_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stocking_1_ {
+            get {
+                object obj = ResourceManager.GetObject("stocking(1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

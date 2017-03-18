@@ -15,6 +15,7 @@ namespace Pizzaria
 
         // variaveis globais
         int X = 0, Y = 0;
+        bool menuExtended = true;
 
         public frmPrincipal()
         {
@@ -34,8 +35,10 @@ namespace Pizzaria
             panTitleBar.BackColor = ColorTranslator.FromHtml("#FBC02D");
             panPrincipal.BackColor = ColorTranslator.FromHtml("#FFF9C4");
             panActionBar.BackColor = ColorTranslator.FromHtml("#FFEE58");
+            panSideBar.BackColor = ColorTranslator.FromHtml("#fff176");
+            lblUser.BackColor = ColorTranslator.FromHtml("#fff176");
+            lblStock.BackColor = ColorTranslator.FromHtml("#fff176");
 
-            
         }
 
         private void panTitleBar_MouseDown(object sender, MouseEventArgs e)
@@ -79,6 +82,71 @@ namespace Pizzaria
                 ptbMaxiRest.Image = Pizzaria.Properties.Resources.window_maximize;
                 this.WindowState = FormWindowState.Normal;
             }
+        }
+
+        private void lblUser_MouseEnter(object sender, EventArgs e)
+        {
+            lblUser.BackColor = ColorTranslator.FromHtml("#fff59d");
+        }
+
+        private void lblUser_MouseLeave(object sender, EventArgs e)
+        {
+            lblUser.BackColor = ColorTranslator.FromHtml("#fff176");
+        }
+
+        private void lblStock_MouseEnter(object sender, EventArgs e)
+        {
+            lblStock.BackColor = ColorTranslator.FromHtml("#fff59d");
+        }
+
+        private void lblStock_MouseLeave(object sender, EventArgs e)
+        {
+            lblStock.BackColor = ColorTranslator.FromHtml("#fff176");
+        }
+
+        private void ptbMenu_Click(object sender, EventArgs e)
+        {
+            //ptbMenu.Image = Pizzaria.Properties.Resources.ic_arrow_back_white_24dp;
+            tmMenuSide.Enabled = true;
+        }
+
+        private void tmMenuSide_Tick(object sender, EventArgs e)
+        {
+
+            switch (menuExtended)
+            {
+                // diminui menu
+                case true:
+                    if (panSideBar.Width == 75)
+                    {
+                        
+                        menuExtended = false;
+                        tmMenuSide.Enabled = false;
+                    }
+                    else
+                    {
+                        lblUser.Text = "";
+                        lblStock.Text = "";
+                        panSideBar.Width -= 25;
+                    }
+                    break;
+
+                // aumenta menu
+                case false:
+                    if (panSideBar.Width == 250)
+                    {
+                        lblUser.Text = "Usuário";
+                        lblStock.Text = "Estoque";
+                        menuExtended = true;
+                        tmMenuSide.Enabled = false;
+                    }
+                    else
+                    {
+                        panSideBar.Width += 25;
+                    }
+                    break;
+            }
+            
         }
 
         protected override CreateParams CreateParams
