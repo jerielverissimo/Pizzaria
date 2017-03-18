@@ -47,8 +47,7 @@ namespace Pizzaria
 
         private void panTitleBar_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.WindowState == FormWindowState.Normal)  this.WindowState = FormWindowState.Maximized; 
-            else this.WindowState = FormWindowState.Normal;
+            maximize_restore_window();
         }
 
         private void panTitleBar_MouseMove(object sender, MouseEventArgs e)
@@ -58,7 +57,31 @@ namespace Pizzaria
             this.Top = Y + MousePosition.Y;
         }
 
-        /*protected override CreateParams CreateParams
+        private void ptbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ptbMaxiRest_Click(object sender, EventArgs e)
+        {
+            maximize_restore_window();
+        }
+
+        void maximize_restore_window()
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                ptbMaxiRest.Image = Pizzaria.Properties.Resources.window_restore;
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                ptbMaxiRest.Image = Pizzaria.Properties.Resources.window_maximize;
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        protected override CreateParams CreateParams
         {
             get
             {
@@ -68,6 +91,6 @@ namespace Pizzaria
                 return cp;
             }
 
-        }*/
+        }
     }
 }
