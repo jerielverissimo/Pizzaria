@@ -15,7 +15,8 @@ namespace Pizzaria
 
         // variaveis globais
         int X = 0, Y = 0;
-        bool menuExtended = true;
+        float per25 = 0, per50 = 0;
+        bool menuExtended = true, notify = false, search = false;
 
         public frmPrincipal()
         {
@@ -38,6 +39,12 @@ namespace Pizzaria
             panSideBar.BackColor = ColorTranslator.FromHtml("#fff176");
             lblUser.BackColor = ColorTranslator.FromHtml("#fff176");
             lblStock.BackColor = ColorTranslator.FromHtml("#fff176");
+            panSearch.BackColor = ColorTranslator.FromHtml("#795548");
+            txtSearch.BackColor = ColorTranslator.FromHtml("#8d6e63");
+            panAlert.BackColor = ColorTranslator.FromHtml("#f44336");
+            panAlert.Left = (panOrder.Size.Width - panAlert.Size.Width) / 2;
+            lblAlert.Text = panAlert.Left.ToString();
+            
 
         }
 
@@ -127,6 +134,8 @@ namespace Pizzaria
                     {
                         lblUser.Text = "";
                         lblStock.Text = "";
+                        lblCaixa.Text = "";
+                        lblPedido.Text = "";
                         panSideBar.Width -= 25;
                     }
                     break;
@@ -137,12 +146,137 @@ namespace Pizzaria
                     {
                         lblUser.Text = "Usuário";
                         lblStock.Text = "Estoque";
+                        lblCaixa.Text = "Caixa";
+                        lblPedido.Text = "Pedido";
                         menuExtended = true;
                         tmMenuSide.Enabled = false;
                     }
                     else
                     {
                         panSideBar.Width += 25;
+                    }
+                    break;
+            }
+            
+        }
+
+        private void ptbAddPedido_MouseEnter(object sender, EventArgs e)
+        {
+            ptbAddPedido.Image = Pizzaria.Properties.Resources.add_circle_red_hover;
+        }
+
+        private void ptbAddPedido_MouseLeave(object sender, EventArgs e)
+        {
+            ptbAddPedido.Image = Pizzaria.Properties.Resources.add_circle_red;
+        }
+
+        private void lblCaixa_MouseEnter(object sender, EventArgs e)
+        {
+            lblCaixa.BackColor = ColorTranslator.FromHtml("#fff59d");
+        }
+
+        private void lblCaixa_MouseLeave(object sender, EventArgs e)
+        {
+            lblCaixa.BackColor = ColorTranslator.FromHtml("#fff176");
+        }
+
+        private void lblPedido_MouseEnter(object sender, EventArgs e)
+        {
+            lblPedido.BackColor = ColorTranslator.FromHtml("#fff59d");
+        }
+
+        private void lblPedido_MouseLeave(object sender, EventArgs e)
+        {
+            lblPedido.BackColor = ColorTranslator.FromHtml("#fff176");
+        }
+
+        private void frmPrincipal_SizeChanged(object sender, EventArgs e)
+        {
+            ptbAddPedido.Left = (panOrder.Size.Width - ptbAddPedido.Size.Width) / 2;
+        }
+
+        private void tmSearch_Tick(object sender, EventArgs e)
+        {
+            switch (search)
+            {
+                case true:
+                    if (panSearch.Height == 0)
+                    {
+                        search = false;
+                        tmSearch.Enabled = false;
+                    }
+                    else
+                    {
+                        panSearch.Height -= 10;
+                        panNotify.Location = new Point(panNotify.Location.X, panSearch.Height);
+                    }
+                    break;
+                case false:
+                    if (panSearch.Height == 75)
+                    {
+                        search = true;
+                        tmSearch.Enabled = false;
+                    }
+                    else
+                    {
+                        panSearch.Height += 25;
+                        panNotify.Location = new Point(panNotify.Location.X, panSearch.Height);
+                    }
+                    break;
+            }
+        }
+
+        private void ptbSearch_Click(object sender, EventArgs e)
+        {
+            tmSearch.Enabled = true;
+        }
+
+        private void ptbAddPedido_Click(object sender, EventArgs e)
+        {
+            tmAlert.Enabled = true;
+        }
+
+        private void tmAlert_Tick(object sender, EventArgs e)
+        {
+            if (panAlert.Left <= 0 && panAlert.Width >= panOrder.Width) tmAlert.Enabled = false;
+            else
+            {
+                panAlert.Left -= 10;
+                panAlert.Width += 25;
+                lblAlert.Text = panAlert.Left.ToString() + " - " + panAlert.Width.ToString();
+            }
+        }
+
+        private void ptbNotify_Click(object sender, EventArgs e)
+        {
+            tmNotify.Enabled = true;
+        }
+
+        private void tmNotify_Tick(object sender, EventArgs e)
+        {
+
+            switch (notify)
+            {
+                case true:
+                    if (panNotify.Height == 0)
+                    {
+                        notify = false;
+                        tmNotify.Enabled = false;
+                    }
+                    else
+                    {
+                        panNotify.Height -= 25;
+                    }
+                    break;
+                case false:
+                    if (panNotify.Height == 225)
+                    {
+                        notify = true;
+                        tmNotify.Enabled = false;
+                    }
+                    else
+                    {
+                        panNotify.Height += 25;
                     }
                     break;
             }

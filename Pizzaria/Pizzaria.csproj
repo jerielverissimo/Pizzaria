@@ -82,20 +82,34 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="img\icons\add_circle_red_hover.png" />
+    <None Include="img\icons\add_circle_red.png" />
     <Content Include="img\icons\ic_account_circle_black_24dp.png" />
     <Content Include="img\icons\ic_account_circle_black_48dp.png" />
     <Content Include="img\icons\ic_account_circle_white_36dp.png" />
     <Content Include="img\icons\ic_account_circle_white_48dp.png" />
+    <Content Include="img\icons\ic_add_circle_black_48dp.png" />
     <Content Include="img\icons\ic_arrow_back_black_24dp.png" />
     <Content Include="img\icons\ic_arrow_back_white_24dp.png" />
+    <Content Include="img\icons\ic_clear_all_black_24dp.png" />
     <Content Include="img\icons\ic_close_black_24dp.png" />
     <Content Include="img\icons\ic_close_white_24dp.png" />
     <Content Include="img\icons\ic_fullscreen_black_24dp.png" />
     <Content Include="img\icons\ic_fullscreen_exit_black_24dp.png" />
     <Content Include="img\icons\ic_fullscreen_exit_white_24dp.png" />
     <Content Include="img\icons\ic_fullscreen_white_24dp.png" />
+    <Content Include="img\icons\ic_local_atm_white_48dp.png" />
+    <Content Include="img\icons\ic_local_pizza_black_48dp.png" />
+    <Content Include="img\icons\ic_local_pizza_white_48dp.png" />
     <Content Include="img\icons\ic_menu_black_24dp.png" />
     <Content Include="img\icons\ic_menu_white_24dp.png" />
+    <Content Include="img\icons\ic_notifications_none_white_24dp.png" />
+    <Content Include="img\icons\ic_notifications_white_24dp.png" />
+    <Content Include="img\icons\ic_search_black_24dp.png" />
+    <Content Include="img\icons\ic_search_white_24dp.png" />
+    <Content Include="img\icons\ic_warning_black_36dp.png" />
+    <Content Include="img\icons\ic_warning_white_24dp.png" />
+    <Content Include="img\icons\ic_warning_white_36dp.png" />
     <Content Include="img\icons\stocking%281%29.png" />
     <Content Include="img\icons\window-close.png" />
     <Content Include="img\icons\window-maximize.png" />

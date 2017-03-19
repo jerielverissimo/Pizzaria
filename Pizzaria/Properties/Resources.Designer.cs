@@ -63,6 +63,26 @@ namespace Pizzaria.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_circle_red {
+            get {
+                object obj = ResourceManager.GetObject("add_circle_red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_circle_red_hover {
+            get {
+                object obj = ResourceManager.GetObject("add_circle_red_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_account_circle_black_48dp {
             get {
                 object obj = ResourceManager.GetObject("ic_account_circle_black_48dp", resourceCulture);
@@ -83,9 +103,29 @@ namespace Pizzaria.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_add_circle_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_add_circle_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_arrow_back_white_24dp {
             get {
                 object obj = ResourceManager.GetObject("ic_arrow_back_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_clear_all_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_clear_all_black_24dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,6 +193,36 @@ namespace Pizzaria.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_local_atm_white_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_local_atm_white_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_local_pizza_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_local_pizza_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_local_pizza_white_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_local_pizza_white_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_menu_black_24dp {
             get {
                 object obj = ResourceManager.GetObject("ic_menu_black_24dp", resourceCulture);
@@ -166,6 +236,46 @@ namespace Pizzaria.Properties {
         internal static System.Drawing.Bitmap ic_menu_white_24dp {
             get {
                 object obj = ResourceManager.GetObject("ic_menu_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_notifications_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_notifications_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_search_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_search_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_warning_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_warning_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_warning_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_warning_white_36dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
