@@ -14,40 +14,29 @@ namespace Pizzaria
     {
 
         // variaveis globais
-        int X = 0, Y = 0;
-        float per25 = 0, per50 = 0;
-        bool menuExtended = true, notify = false, search = false;
+
+        int X = 0, Y = 0; // variáveis para usar no arrastar form.
+        
+        // var do alert
+        float largAlert = 0, tamAlert = 0, origemAlert = 0, locAlert = 0;
+        const float porc = 0.2f;
+        
+        bool menuExtended = true, notify = false, search = false, ativarAlert = false; // vars de controle
 
         public frmPrincipal()
         {
             InitializeComponent();
-
-            setComponents();
             
         }
+        
 
-        void setComponents()
-        {
-            // mover formulário
-            this.MouseDown += new MouseEventHandler(panTitleBar_MouseDown);
-            this.MouseMove += new MouseEventHandler(panTitleBar_MouseMove);
+        
 
-            // setar cores
-            panTitleBar.BackColor = ColorTranslator.FromHtml("#FBC02D");
-            panPrincipal.BackColor = ColorTranslator.FromHtml("#FFF9C4");
-            panActionBar.BackColor = ColorTranslator.FromHtml("#FFEE58");
-            panSideBar.BackColor = ColorTranslator.FromHtml("#fff176");
-            lblUser.BackColor = ColorTranslator.FromHtml("#fff176");
-            lblStock.BackColor = ColorTranslator.FromHtml("#fff176");
-            panSearch.BackColor = ColorTranslator.FromHtml("#795548");
-            txtSearch.BackColor = ColorTranslator.FromHtml("#8d6e63");
-            panAlert.BackColor = ColorTranslator.FromHtml("#f44336");
-            panAlert.Left = (panOrder.Size.Width - panAlert.Size.Width) / 2;
-            lblAlert.Text = panAlert.Left.ToString();
-            
-
-        }
-
+        
+        ///     
+        /// Eventos
+        /// 
+        
         private void panTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
@@ -137,6 +126,7 @@ namespace Pizzaria
                         lblCaixa.Text = "";
                         lblPedido.Text = "";
                         panSideBar.Width -= 25;
+                        panAlert.Left = panSideBar.Width;
                     }
                     break;
 
@@ -154,6 +144,7 @@ namespace Pizzaria
                     else
                     {
                         panSideBar.Width += 25;
+                        panAlert.Left = panSideBar.Width;
                     }
                     break;
             }
@@ -193,6 +184,19 @@ namespace Pizzaria
         private void frmPrincipal_SizeChanged(object sender, EventArgs e)
         {
             ptbAddPedido.Left = (panOrder.Size.Width - ptbAddPedido.Size.Width) / 2;
+
+            // zera as var do alert
+            largAlert = 0;
+            tamAlert = 0;
+            origemAlert = 0;
+            locAlert = 0;
+
+            // posiciona o alert no centro e embaixo
+            panAlert.Top = this.ClientSize.Height - panAlert.Height;
+            panAlert.Left = (this.ClientSize.Width - panAlert.Width) / 2;
+
+            locAlert = ClientSize.Width / 2;
+            largAlert = ClientSize.Width * porc;
         }
 
         private void tmSearch_Tick(object sender, EventArgs e)
@@ -236,14 +240,67 @@ namespace Pizzaria
             tmAlert.Enabled = true;
         }
 
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            // mover formulário
+            this.MouseDown += new MouseEventHandler(panTitleBar_MouseDown);
+            this.MouseMove += new MouseEventHandler(panTitleBar_MouseMove);
+
+            panAlert.Top = this.ClientSize.Height - panAlert.Height;
+            panAlert.Left = (this.ClientSize.Width - panAlert.Width) / 2;
+            // setar vars do alerta
+
+            locAlert = ClientSize.Width / 2;
+            largAlert = ClientSize.Width * porc;
+
+            origemAlert = (ClientSize.Width / 2) * porc;
+
+            // setar cores
+            panTitleBar.BackColor = ColorTranslator.FromHtml("#FBC02D");
+            panPrincipal.BackColor = ColorTranslator.FromHtml("#FFF9C4");
+            panActionBar.BackColor = ColorTranslator.FromHtml("#FFEE58");
+            panSideBar.BackColor = ColorTranslator.FromHtml("#fff176");
+            lblUser.BackColor = ColorTranslator.FromHtml("#fff176");
+            lblStock.BackColor = ColorTranslator.FromHtml("#fff176");
+            panSearch.BackColor = ColorTranslator.FromHtml("#795548");
+            txtSearch.BackColor = ColorTranslator.FromHtml("#8d6e63");
+            panAlert.BackColor = ColorTranslator.FromHtml("#f44336");
+            panAlert.Left = (panOrder.Size.Width - panAlert.Size.Width) / 2;
+            lblAlert.Text = panAlert.Left.ToString();
+
+           
+        }
+
         private void tmAlert_Tick(object sender, EventArgs e)
         {
-            if (panAlert.Left <= 0 && panAlert.Width >= panOrder.Width) tmAlert.Enabled = false;
-            else
+            panAlert.Left = Convert.ToInt32(tamAlert);
+            panAlert.Width = Convert.ToInt32(locAlert);
+
+            switch (ativarAlert)
             {
-                panAlert.Left -= 10;
-                panAlert.Width += 25;
-                lblAlert.Text = panAlert.Left.ToString() + " - " + panAlert.Width.ToString();
+                case false:
+
+                    tamAlert += largAlert;
+                    locAlert -= origemAlert;
+
+                    if (panAlert.Width == ClientSize.Width && panAlert.Left == 0)
+                    {
+                        tmAlert.Enabled = false;
+                        ativarAlert = true;
+                    }
+
+                    break;
+                case true:
+
+                    tamAlert -= largAlert;
+                    locAlert += origemAlert;
+
+                    if (panAlert.Width == 0 && panAlert.Left == ClientSize.Width / 2)
+                    {
+                        tmAlert.Enabled = false;
+                        ativarAlert = false;
+                    }
+                    break;
             }
         }
 
