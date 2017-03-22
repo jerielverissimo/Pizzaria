@@ -27,6 +27,8 @@ namespace Pizzaria
         int pos = 0;
         bool flag = false, prim = false;
 
+        
+
         // Construtor do form
         public frmPrincipal()
         {
@@ -37,6 +39,10 @@ namespace Pizzaria
         // load do form 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+
+           
+
+            
             // mover formulário
             this.MouseDown += new MouseEventHandler(panTitleBar_MouseDown);
             this.MouseMove += new MouseEventHandler(panTitleBar_MouseMove);
@@ -144,6 +150,7 @@ namespace Pizzaria
                         txtSearch.Visible = false;
                         btnSearch.Visible = false;
                         panNotify.Location = new Point(panNotify.Location.X, panSearch.Height);
+                        //panPedido.Top = panSearch.Height;
                     }
                     break;
                 case false:
@@ -158,6 +165,7 @@ namespace Pizzaria
                         txtSearch.Visible = true;
                         btnSearch.Visible = true;
                         panNotify.Location = new Point(panNotify.Location.X, panSearch.Height);
+                        //panPedido.Top = panSearch.Height;
                     }
                     break;
             }
@@ -181,8 +189,11 @@ namespace Pizzaria
                     {
 
                         lblStock.Text = "";
-
                         lblPedido.Text = "";
+                        lblData.Visible = false;
+                        lblHora.Visible = false;
+                        lblLogo.Visible = false;
+
                         panSideBar.Width -= 25;
                         
                     }
@@ -194,8 +205,11 @@ namespace Pizzaria
                     {
 
                         lblStock.Text = "Estoque";
-
                         lblPedido.Text = "Pedido";
+                        lblData.Visible = true;
+                        lblHora.Visible = true;
+                        lblLogo.Visible = true;
+
                         menuExtended = true;
                         tmMenuSide.Enabled = false;
                     }
@@ -386,6 +400,22 @@ namespace Pizzaria
             }
         }
 
+        private void atualizaHora_Tick(object sender, EventArgs e)
+        {
+            // Pegar hora e data
+            string hora = DateTime.Now.ToShortTimeString();
+            string data = DateTime.Now.ToShortDateString();
+            lblHora.Text = hora;
+            lblData.Text = data;
+        }
+
+        private void ptbFechar_Click(object sender, EventArgs e)
+        {
+            tmAlert.Enabled = true;
+        }
+
+     
+
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             txtSearch.BackColor = ColorTranslator.FromHtml("#A1887F");
@@ -394,11 +424,7 @@ namespace Pizzaria
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Codig.Pizza p = new Codig.Pizza();
-            Codig.Estoque est = new Codig.Estoque();
-            p.Tipo = txtNome.Text;
-            est.selec(p.Tipo);
-            label1.Text = est.Mussarela.ToString();
+          
         }
 
         private void lblPedido_Click(object sender, EventArgs e)
@@ -428,7 +454,7 @@ namespace Pizzaria
         private void ptbAddPedido_Click(object sender, EventArgs e)
         {
             tmAlert.Enabled = true;
-            Codig.Estoque est = new Codig.Estoque();
+           
         }
 
 
