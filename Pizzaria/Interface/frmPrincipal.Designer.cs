@@ -64,6 +64,8 @@
             this.lblAlert = new System.Windows.Forms.Label();
             this.panAlert = new System.Windows.Forms.Panel();
             this.panEstoque = new System.Windows.Forms.Panel();
+            this.tmEstoque = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             this.panTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).BeginInit();
@@ -81,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbAlert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbFechar)).BeginInit();
             this.panAlert.SuspendLayout();
+            this.panEstoque.SuspendLayout();
             this.SuspendLayout();
             // 
             // panTitleBar
@@ -493,11 +496,28 @@
             // panEstoque
             // 
             this.panEstoque.BackColor = System.Drawing.Color.Indigo;
+            this.panEstoque.Controls.Add(this.label2);
             this.panEstoque.Location = new System.Drawing.Point(546, 0);
             this.panEstoque.Margin = new System.Windows.Forms.Padding(0);
             this.panEstoque.Name = "panEstoque";
             this.panEstoque.Size = new System.Drawing.Size(379, 583);
             this.panEstoque.TabIndex = 8;
+            // 
+            // tmEstoque
+            // 
+            this.tmEstoque.Interval = 1;
+            this.tmEstoque.Tick += new System.EventHandler(this.tmEstoque_Tick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(54, 45);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(10);
+            this.label2.Size = new System.Drawing.Size(55, 33);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "label2";
             // 
             // frmPrincipal
             // 
@@ -535,6 +555,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbFechar)).EndInit();
             this.panAlert.ResumeLayout(false);
             this.panAlert.PerformLayout();
+            this.panEstoque.ResumeLayout(false);
+            this.panEstoque.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -576,6 +598,8 @@
         private System.Windows.Forms.PictureBox ptbFechar;
         private System.Windows.Forms.PictureBox ptbAlert;
         private System.Windows.Forms.Panel panEstoque;
+        private System.Windows.Forms.Timer tmEstoque;
+        private System.Windows.Forms.Label label2;
     }
 }
 

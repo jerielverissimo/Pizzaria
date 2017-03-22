@@ -22,6 +22,10 @@ namespace Pizzaria
         const float porc = 0.2f;
         
         bool menuExtended = false, notify = false, search = false, ativarAlert = false; // vars de controle
+    
+        // var para slide do estoque
+        int pos = 0;
+        bool flag = false, prim = false;
 
         // Construtor do form
         public frmPrincipal()
@@ -48,6 +52,11 @@ namespace Pizzaria
             origem = panPedido.ClientSize.Width / 2;
             largura = panPedido.ClientSize.Width * porc;
             locLargura = (panPedido.ClientSize.Width / 2) * porc;
+
+            // set efeito estoque
+            panEstoque.Location = new Point(this.ClientSize.Width, 0);
+
+
 
             // setar cores
             panTitleBar.BackColor = ColorTranslator.FromHtml("#FBC02D");
@@ -88,6 +97,13 @@ namespace Pizzaria
                 panAlert.Left = 0;
                 panAlert.Width = panPedido.ClientSize.Width;
             }
+
+            // slide estoque
+
+            
+            if (flag == true) panEstoque.Location = new Point(this.ClientSize.Width, 0);
+            if (prim == false) panEstoque.Location = new Point(this.ClientSize.Width, 0);
+            panEstoque.Size = new Size(this.Size.Width, this.Size.Height);
 
 
         }
@@ -341,6 +357,35 @@ namespace Pizzaria
             txtSearch.BackColor = ColorTranslator.FromHtml("#BCAAA4");
         }
 
+        private void tmEstoque_Tick(object sender, EventArgs e)
+        {
+            switch (flag)
+            {
+                case false:
+                    if (panEstoque.Location.X <= 0)
+                    {
+                        tmEstoque.Enabled = false;
+                    }
+                    else
+                    {
+                        pos -= 100;
+                        panEstoque.Location = new Point(pos, 0);
+                    }
+                    break;
+                case true:
+                    if (panEstoque.Location.X >= this.ClientSize.Width)
+                    {
+                        tmEstoque.Enabled = false;
+                    }
+                    else
+                    {
+                        pos += 100;
+                        panEstoque.Location = new Point(pos, 0);
+                    }
+                    break;
+            }
+        }
+
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             txtSearch.BackColor = ColorTranslator.FromHtml("#A1887F");
@@ -360,12 +405,19 @@ namespace Pizzaria
         {
             ptbSearch.Enabled = false;
             ptbSearch.Visible = false;
+            tmEstoque.Enabled = true;
+            flag = true;
+            prim = false;
         }
 
         private void lblStock_Click(object sender, EventArgs e)
         {
             ptbSearch.Enabled = true;
             ptbSearch.Visible = true;
+            pos = panEstoque.Width;
+            tmEstoque.Enabled = true;
+            flag = false;
+            prim = true;
         }
 
         private void ptbSearch_Click(object sender, EventArgs e)
