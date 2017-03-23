@@ -133,7 +133,7 @@
     <value>341, 17</value>
   </metadata>
   <metadata name="tmEstoque.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>429, 20</value>
+    <value>426, 19</value>
   </metadata>
   <metadata name="atualizaHora.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>538, 17</value>
@@ -142,6 +142,6 @@
     <value>658, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>64</value>
+    <value>66</value>
   </metadata>
 </root>

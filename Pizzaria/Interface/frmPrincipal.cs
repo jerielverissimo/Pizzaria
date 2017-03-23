@@ -29,6 +29,8 @@ namespace Pizzaria
         int posEstoque = 0;
         bool flagEstoque = false;
 
+        // objs
+        Interface.Notificacao aviso = new Interface.Notificacao();
 
 
         // Construtor do form
@@ -43,7 +45,7 @@ namespace Pizzaria
         {
 
 
-
+            
 
             // mover formulário
             this.MouseDown += new MouseEventHandler(panTitleBar_MouseDown);
@@ -78,10 +80,13 @@ namespace Pizzaria
             txtSearch.BackColor = ColorTranslator.FromHtml("#8d6e63");
             txtSearch.ForeColor = ColorTranslator.FromHtml("#795548");
             btnSearch.BackColor = ColorTranslator.FromHtml("#A1887F");
-            lblCliente.ForeColor = ColorTranslator.FromHtml("#212121");
+            lblNumPedido.ForeColor = ColorTranslator.FromHtml("#212121");
             panPedido.BackColor = ColorTranslator.FromHtml("#F5F5F5");
             panNotify.BackColor = ColorTranslator.FromHtml("#FF7043");
             lstNotify.BackColor = ColorTranslator.FromHtml("#FF7043");
+            lblAddPizza.BackColor = ColorTranslator.FromHtml("#ffff8d");
+            lblLimparDados.BackColor = ColorTranslator.FromHtml("#b2ff59");
+            lblExcluirPedido.BackColor = ColorTranslator.FromHtml("#ff5252");
 
 
             cmbPizza.DataSource = PizzaBLL.PizzaDB;
@@ -180,7 +185,7 @@ namespace Pizzaria
                     }
                     else
                     {
-                        panSearch.Height += 25;
+                        panSearch.Height += 5;
                         txtSearch.Visible = true;
                         btnSearch.Visible = true;
                         panNotify.Location = new Point(panNotify.Location.X, panSearch.Height);
@@ -263,7 +268,7 @@ namespace Pizzaria
                         ptbAlert.Visible = true;
                         ptbFechar.Visible = true;
                         lblAlert.Visible = true;
-
+                        
                     }
                     break;
                 case true:
@@ -460,7 +465,7 @@ namespace Pizzaria
 
         private void lblLimparDados_Click(object sender, EventArgs e)
         {
-
+            txtPedido.Text = "";
         }
 
         private void lstEstoque_SelectedIndexChanged(object sender, EventArgs e)
@@ -471,7 +476,7 @@ namespace Pizzaria
         private void lblAddPizza_Click(object sender, EventArgs e)
         {
             PedidoModel pedido;
-            if (string.IsNullOrEmpty(txtCliente.Text))
+            if (string.IsNullOrEmpty(txtPedido.Text))
             {
                 //Faz novo pedido
                 pedido = new PedidoModel();
@@ -482,14 +487,14 @@ namespace Pizzaria
             else
             {
                 //Obtem Pedido
-                pedido = PedidoBLL.GetPedidoPorNumero(txtCliente.Text);
+                pedido = PedidoBLL.GetPedidoPorNumero(txtPedido.Text);
 
                 if (pedido == null)
                 {
                     MessageBox.Show("Pedido Inválido!");
                     return;
                 }
-                PedidoBLL.PedidoDB.RemoveAt(PedidoBLL.PedidoDB.FindIndex(x => x.NumeroPedido == txtCliente.Text));
+                PedidoBLL.PedidoDB.RemoveAt(PedidoBLL.PedidoDB.FindIndex(x => x.NumeroPedido == txtPedido.Text));
             }
 
             if (pedido.Pizzas == null)
@@ -497,8 +502,45 @@ namespace Pizzaria
 
             pedido.Pizzas.Add(new PedidoPizzaModel() { IdPedido = PedidoBLL.PedidoDB.Count + 1, ComBorda = ckbBorda.Checked, IdPizza = (int)cmbPizza.SelectedValue, Pizza = PizzaBLL.GetPizzaById((int)cmbPizza.SelectedValue), Pedido = pedido, Quantidade = (int)numQtd.Value });
             PedidoBLL.PedidoDB.Add(pedido);
-            txtCliente.Text = pedido.NumeroPedido;
+            txtPedido.Text = pedido.NumeroPedido;
             cmbPedidos.Refresh();
+        }
+
+        private void lstNotify_DoubleClick(object sender, EventArgs e)
+        {
+            aviso.pushMessage("teste asdfasdfasdf", lblAlert);
+            tmAlert.Enabled = true;
+            
+        }
+
+        private void lblAddPizza_MouseEnter(object sender, EventArgs e)
+        {
+            lblAddPizza.BackColor = ColorTranslator.FromHtml("#fff9c4");
+        }
+
+        private void lblAddPizza_MouseLeave(object sender, EventArgs e)
+        {
+            lblAddPizza.BackColor = ColorTranslator.FromHtml("#ffff8d");
+        }
+
+        private void lblLimparDados_MouseEnter(object sender, EventArgs e)
+        {
+            lblLimparDados.BackColor = ColorTranslator.FromHtml("#ccff90");
+        }
+
+        private void lblLimparDados_MouseLeave(object sender, EventArgs e)
+        {
+              lblLimparDados.BackColor = ColorTranslator.FromHtml("#b2ff59");
+        }
+
+        private void lblExcluirPedido_MouseEnter(object sender, EventArgs e)
+        {
+            lblExcluirPedido.BackColor = ColorTranslator.FromHtml("#ff8a80");
+        }
+
+        private void lblExcluirPedido_MouseLeave(object sender, EventArgs e)
+        {
+            lblExcluirPedido.BackColor = ColorTranslator.FromHtml("#ff5252");
         }
 
         private void tmPedidos_Tick(object sender, EventArgs e)

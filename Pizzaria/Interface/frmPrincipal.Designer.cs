@@ -42,7 +42,6 @@
             this.lblClear = new System.Windows.Forms.Label();
             this.panEstoque = new System.Windows.Forms.Panel();
             this.dgvEstoque = new System.Windows.Forms.DataGridView();
-            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ckbAcabando = new System.Windows.Forms.CheckBox();
             this.lblLimparDados = new System.Windows.Forms.Label();
             this.panPedidos = new System.Windows.Forms.Panel();
@@ -56,8 +55,8 @@
             this.ckbBorda = new System.Windows.Forms.CheckBox();
             this.cmbPizza = new System.Windows.Forms.ComboBox();
             this.lblSabor = new System.Windows.Forms.Label();
-            this.txtCliente = new System.Windows.Forms.TextBox();
-            this.lblCliente = new System.Windows.Forms.Label();
+            this.txtPedido = new System.Windows.Forms.TextBox();
+            this.lblNumPedido = new System.Windows.Forms.Label();
             this.lblAddPizza = new System.Windows.Forms.Label();
             this.panAlert = new System.Windows.Forms.Panel();
             this.lblAlert = new System.Windows.Forms.Label();
@@ -88,6 +87,7 @@
             this.idIngredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ingredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).BeginInit();
@@ -97,7 +97,6 @@
             this.panNotify.SuspendLayout();
             this.panEstoque.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
             this.panPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).BeginInit();
             this.panAlert.SuspendLayout();
@@ -110,6 +109,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panTitleBar
@@ -191,17 +191,17 @@
             // panPedido
             // 
             this.panPedido.BackColor = System.Drawing.Color.White;
+            this.panPedido.Controls.Add(this.panPedidos);
             this.panPedido.Controls.Add(this.panNotify);
             this.panPedido.Controls.Add(this.panEstoque);
             this.panPedido.Controls.Add(this.lblLimparDados);
-            this.panPedido.Controls.Add(this.panPedidos);
             this.panPedido.Controls.Add(this.numQtd);
             this.panPedido.Controls.Add(this.lblQtd);
             this.panPedido.Controls.Add(this.ckbBorda);
             this.panPedido.Controls.Add(this.cmbPizza);
             this.panPedido.Controls.Add(this.lblSabor);
-            this.panPedido.Controls.Add(this.txtCliente);
-            this.panPedido.Controls.Add(this.lblCliente);
+            this.panPedido.Controls.Add(this.txtPedido);
+            this.panPedido.Controls.Add(this.lblNumPedido);
             this.panPedido.Controls.Add(this.lblAddPizza);
             this.panPedido.Controls.Add(this.panAlert);
             this.panPedido.Controls.Add(this.panSearch);
@@ -245,6 +245,7 @@
             this.lstNotify.Name = "lstNotify";
             this.lstNotify.Size = new System.Drawing.Size(205, 114);
             this.lstNotify.TabIndex = 10;
+            this.lstNotify.DoubleClick += new System.EventHandler(this.lstNotify_DoubleClick);
             // 
             // lblNotify
             // 
@@ -279,7 +280,7 @@
             this.panEstoque.Controls.Add(this.ckbAcabando);
             this.panEstoque.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panEstoque.ForeColor = System.Drawing.Color.DimGray;
-            this.panEstoque.Location = new System.Drawing.Point(3, 0);
+            this.panEstoque.Location = new System.Drawing.Point(764, 0);
             this.panEstoque.Margin = new System.Windows.Forms.Padding(0);
             this.panEstoque.Name = "panEstoque";
             this.panEstoque.Size = new System.Drawing.Size(922, 583);
@@ -302,18 +303,13 @@
             this.dgvEstoque.Size = new System.Drawing.Size(594, 410);
             this.dgvEstoque.TabIndex = 2;
             // 
-            // estoqueModelBindingSource
-            // 
-            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
-            // 
             // ckbAcabando
             // 
             this.ckbAcabando.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ckbAcabando.AutoSize = true;
-            this.ckbAcabando.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ckbAcabando.Location = new System.Drawing.Point(733, 121);
+            this.ckbAcabando.Location = new System.Drawing.Point(731, 121);
             this.ckbAcabando.Name = "ckbAcabando";
-            this.ckbAcabando.Size = new System.Drawing.Size(177, 29);
+            this.ckbAcabando.Size = new System.Drawing.Size(179, 29);
             this.ckbAcabando.TabIndex = 1;
             this.ckbAcabando.Text = "Itens Acabando";
             this.ckbAcabando.UseVisualStyleBackColor = true;
@@ -332,10 +328,12 @@
             this.lblLimparDados.TabIndex = 18;
             this.lblLimparDados.Text = "Limpar Dados";
             this.lblLimparDados.Click += new System.EventHandler(this.lblLimparDados_Click);
+            this.lblLimparDados.MouseEnter += new System.EventHandler(this.lblLimparDados_MouseEnter);
+            this.lblLimparDados.MouseLeave += new System.EventHandler(this.lblLimparDados_MouseLeave);
             // 
             // panPedidos
             // 
-            this.panPedidos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.panPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panPedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panPedidos.Controls.Add(this.lblExcluirPedido);
             this.panPedidos.Controls.Add(this.lstPedidos);
@@ -362,6 +360,8 @@
             this.lblExcluirPedido.TabIndex = 22;
             this.lblExcluirPedido.Text = "Excluir";
             this.lblExcluirPedido.Visible = false;
+            this.lblExcluirPedido.MouseEnter += new System.EventHandler(this.lblExcluirPedido_MouseEnter);
+            this.lblExcluirPedido.MouseLeave += new System.EventHandler(this.lblExcluirPedido_MouseLeave);
             // 
             // lstPedidos
             // 
@@ -424,6 +424,7 @@
             this.numQtd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.numQtd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numQtd.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numQtd.ForeColor = System.Drawing.Color.DimGray;
             this.numQtd.Location = new System.Drawing.Point(349, 209);
             this.numQtd.Name = "numQtd";
             this.numQtd.Size = new System.Drawing.Size(64, 29);
@@ -434,6 +435,7 @@
             this.lblQtd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblQtd.AutoSize = true;
             this.lblQtd.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtd.ForeColor = System.Drawing.Color.DimGray;
             this.lblQtd.Location = new System.Drawing.Point(211, 211);
             this.lblQtd.Name = "lblQtd";
             this.lblQtd.Size = new System.Drawing.Size(106, 25);
@@ -447,12 +449,12 @@
             this.ckbBorda.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
             this.ckbBorda.FlatAppearance.BorderSize = 5;
             this.ckbBorda.FlatAppearance.CheckedBackColor = System.Drawing.Color.Indigo;
-            this.ckbBorda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ckbBorda.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbBorda.ForeColor = System.Drawing.Color.DimGray;
             this.ckbBorda.Location = new System.Drawing.Point(521, 198);
             this.ckbBorda.Name = "ckbBorda";
             this.ckbBorda.Padding = new System.Windows.Forms.Padding(10);
-            this.ckbBorda.Size = new System.Drawing.Size(141, 47);
+            this.ckbBorda.Size = new System.Drawing.Size(144, 47);
             this.ckbBorda.TabIndex = 14;
             this.ckbBorda.Text = "Com borda";
             this.ckbBorda.UseVisualStyleBackColor = true;
@@ -469,6 +471,7 @@
             this.cmbPizza.BackColor = System.Drawing.Color.White;
             this.cmbPizza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbPizza.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPizza.ForeColor = System.Drawing.Color.DimGray;
             this.cmbPizza.FormattingEnabled = true;
             this.cmbPizza.Items.AddRange(new object[] {
             "Mussarela",
@@ -485,32 +488,35 @@
             this.lblSabor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblSabor.AutoSize = true;
             this.lblSabor.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSabor.ForeColor = System.Drawing.Color.DimGray;
             this.lblSabor.Location = new System.Drawing.Point(258, 147);
             this.lblSabor.Name = "lblSabor";
             this.lblSabor.Size = new System.Drawing.Size(57, 25);
             this.lblSabor.TabIndex = 12;
             this.lblSabor.Text = "Pizza";
             // 
-            // txtCliente
+            // txtPedido
             // 
-            this.txtCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtCliente.BackColor = System.Drawing.Color.White;
-            this.txtCliente.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCliente.Location = new System.Drawing.Point(349, 75);
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(296, 33);
-            this.txtCliente.TabIndex = 11;
+            this.txtPedido.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPedido.BackColor = System.Drawing.Color.White;
+            this.txtPedido.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPedido.ForeColor = System.Drawing.Color.DimGray;
+            this.txtPedido.Location = new System.Drawing.Point(349, 75);
+            this.txtPedido.Name = "txtPedido";
+            this.txtPedido.Size = new System.Drawing.Size(296, 33);
+            this.txtPedido.TabIndex = 11;
             // 
-            // lblCliente
+            // lblNumPedido
             // 
-            this.lblCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblCliente.AutoSize = true;
-            this.lblCliente.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCliente.Location = new System.Drawing.Point(247, 79);
-            this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(95, 25);
-            this.lblCliente.TabIndex = 10;
-            this.lblCliente.Text = "Nº Pedido";
+            this.lblNumPedido.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblNumPedido.AutoSize = true;
+            this.lblNumPedido.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumPedido.ForeColor = System.Drawing.Color.DimGray;
+            this.lblNumPedido.Location = new System.Drawing.Point(247, 79);
+            this.lblNumPedido.Name = "lblNumPedido";
+            this.lblNumPedido.Size = new System.Drawing.Size(95, 25);
+            this.lblNumPedido.TabIndex = 10;
+            this.lblNumPedido.Text = "Nº Pedido";
             // 
             // lblAddPizza
             // 
@@ -526,6 +532,8 @@
             this.lblAddPizza.TabIndex = 9;
             this.lblAddPizza.Text = " Adicionar Pizza";
             this.lblAddPizza.Click += new System.EventHandler(this.lblAddPizza_Click);
+            this.lblAddPizza.MouseEnter += new System.EventHandler(this.lblAddPizza_MouseEnter);
+            this.lblAddPizza.MouseLeave += new System.EventHandler(this.lblAddPizza_MouseLeave);
             // 
             // panAlert
             // 
@@ -646,11 +654,11 @@
             // lblData
             // 
             this.lblData.AutoSize = true;
-            this.lblData.Font = new System.Drawing.Font("Roboto Condensed", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblData.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblData.ForeColor = System.Drawing.Color.DimGray;
             this.lblData.Location = new System.Drawing.Point(63, 545);
             this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(125, 29);
+            this.lblData.Size = new System.Drawing.Size(141, 29);
             this.lblData.TabIndex = 9;
             this.lblData.Text = "10/03/2017";
             this.lblData.Visible = false;
@@ -689,7 +697,7 @@
             this.lblStock.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblStock.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStock.ForeColor = System.Drawing.Color.DimGray;
-            this.lblStock.Image = global::Pizzaria.Properties.Resources.path2;
+            this.lblStock.Image = global::Pizzaria.Properties.Resources.archive;
             this.lblStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblStock.Location = new System.Drawing.Point(0, 0);
             this.lblStock.Margin = new System.Windows.Forms.Padding(0);
@@ -837,6 +845,10 @@
             this.ingredienteDataGridViewTextBoxColumn.HeaderText = "Ingrediente";
             this.ingredienteDataGridViewTextBoxColumn.Name = "ingredienteDataGridViewTextBoxColumn";
             // 
+            // estoqueModelBindingSource
+            // 
+            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -863,7 +875,6 @@
             this.panEstoque.ResumeLayout(false);
             this.panEstoque.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
             this.panPedidos.ResumeLayout(false);
             this.panPedidos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).EndInit();
@@ -881,6 +892,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -904,7 +916,7 @@
         private System.Windows.Forms.PictureBox ptbNotify;
         private System.Windows.Forms.Timer tmNotify;
         private System.Windows.Forms.Timer tmSearch;
-        private System.Windows.Forms.Timer tmAlert;
+        public System.Windows.Forms.Timer tmAlert;
         private System.Windows.Forms.Panel panPedido;
         private System.Windows.Forms.Panel panNotify;
         private System.Windows.Forms.Label lblNotify;
@@ -923,8 +935,8 @@
         private System.Windows.Forms.Timer atualizaHora;
         private System.Windows.Forms.Label lblAddPizza;
         private System.Windows.Forms.ListBox lstNotify;
-        private System.Windows.Forms.Label lblCliente;
-        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.Label lblNumPedido;
+        private System.Windows.Forms.TextBox txtPedido;
         private System.Windows.Forms.ComboBox cmbPizza;
         private System.Windows.Forms.Label lblSabor;
         private System.Windows.Forms.CheckBox ckbBorda;

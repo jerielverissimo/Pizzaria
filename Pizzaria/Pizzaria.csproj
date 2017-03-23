@@ -52,6 +52,7 @@
     <Compile Include="Controle\IngredienteBLL.cs" />
     <Compile Include="Controle\ReceitaBLL.cs" />
     <Compile Include="Controle\PizzaBLL.cs" />
+    <Compile Include="Interface\Notificacao.cs" />
     <Compile Include="Model\Estoque.cs" />
     <Compile Include="Model\Ingrediente.cs" />
     <Compile Include="Model\PedidoPizza.cs" />
@@ -98,6 +99,7 @@
   <ItemGroup>
     <None Include="img\icons\add_circle_red_hover.png" />
     <None Include="img\icons\add_circle_red.png" />
+    <None Include="img\icons\archive.png" />
     <Content Include="img\icons\ic_account_circle_black_24dp.png" />
     <Content Include="img\icons\ic_account_circle_black_48dp.png" />
     <Content Include="img\icons\ic_account_circle_white_36dp.png" />
