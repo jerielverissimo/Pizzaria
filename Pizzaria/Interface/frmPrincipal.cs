@@ -1,4 +1,5 @@
 ﻿using Pizzaria.Controle;
+using Pizzaria.Interface;
 using Pizzaria.Model;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace Pizzaria
         {
 
 
-            
+
 
             // mover formulário
             this.MouseDown += new MouseEventHandler(panTitleBar_MouseDown);
@@ -79,26 +80,34 @@ namespace Pizzaria
             panSearch.BackColor = ColorTranslator.FromHtml("#795548");
             txtSearch.BackColor = ColorTranslator.FromHtml("#8d6e63");
             txtSearch.ForeColor = ColorTranslator.FromHtml("#795548");
-            btnSearch.BackColor = ColorTranslator.FromHtml("#A1887F");
-            lblNumPedido.ForeColor = ColorTranslator.FromHtml("#212121");
+            btnSearch.BackColor = ColorTranslator.FromHtml("#A1887F");            
             panPedido.BackColor = ColorTranslator.FromHtml("#F5F5F5");
             panNotify.BackColor = ColorTranslator.FromHtml("#FF7043");
             lstNotify.BackColor = ColorTranslator.FromHtml("#FF7043");
-            lblAddPizza.BackColor = ColorTranslator.FromHtml("#ffff8d");
-            lblLimparDados.BackColor = ColorTranslator.FromHtml("#b2ff59");
+            lblAddPizza.BackColor = ColorTranslator.FromHtml("#b2ff59");
+            lblLimparDados.BackColor = ColorTranslator.FromHtml("#E53935");
             lblExcluirPedido.BackColor = ColorTranslator.FromHtml("#ff5252");
-
-
+            lblFinalizarPedido.BackColor = ColorTranslator.FromHtml("#b2ff59");
             cmbPizza.DataSource = PizzaBLL.PizzaDB;
             cmbPizza.DisplayMember = "Nome";
             cmbPizza.ValueMember = "IdPizza";
+            cmbPizza.SelectedIndex = -1;
 
-            cmbPedidos.DataSource = PedidoBLL.PedidoDB;
+            //BindingList<PedidoModel> PedidoBinding = new BindingList<PedidoModel>();
+            //PedidoBinding.
+            BindingSource bSourcePedido = new BindingSource();
+            bSourcePedido.DataSource = PedidoBLL.PedidoDB;
+            cmbPedidos.DataSource = bSourcePedido;
+
+            //cmbPedidos.DataSource = PedidoBLL.PedidoDB;
             cmbPedidos.DisplayMember = "NumeroPedido";
             cmbPedidos.ValueMember = "IdPedido";
+            cmbPedidos.SelectedIndex = -1;
 
-            dgvEstoque.DataSource = EstoqueBLL.EstoqueDB;
 
+            BindingSource bSourceEstoque = new BindingSource();
+            bSourceEstoque.DataSource = EstoqueBLL.EstoqueDB;
+            dgvEstoque.DataSource = bSourceEstoque;
         }
 
 
@@ -268,7 +277,7 @@ namespace Pizzaria
                         ptbAlert.Visible = true;
                         ptbFechar.Visible = true;
                         lblAlert.Visible = true;
-                        
+
                     }
                     break;
                 case true:
@@ -466,6 +475,8 @@ namespace Pizzaria
         private void lblLimparDados_Click(object sender, EventArgs e)
         {
             txtPedido.Text = "";
+            cmbPizza.SelectedIndex = -1;
+            cmbPedidos.SelectedIndex = -1;
         }
 
         private void lstEstoque_SelectedIndexChanged(object sender, EventArgs e)
@@ -494,43 +505,56 @@ namespace Pizzaria
                     MessageBox.Show("Pedido Inválido!");
                     return;
                 }
-                PedidoBLL.PedidoDB.RemoveAt(PedidoBLL.PedidoDB.FindIndex(x => x.NumeroPedido == txtPedido.Text));
+                PedidoBLL.PedidoDB.RemoveAt(PedidoBLL.PedidoDB.ToList().FindIndex(x => x.NumeroPedido == txtPedido.Text));
             }
 
             if (pedido.Pizzas == null)
-                pedido.Pizzas = new List<PedidoPizzaModel>();
+                pedido.Pizzas = new BindingList<PedidoPizzaModel>();
 
-            pedido.Pizzas.Add(new PedidoPizzaModel() { IdPedido = PedidoBLL.PedidoDB.Count + 1, ComBorda = ckbBorda.Checked, IdPizza = (int)cmbPizza.SelectedValue, Pizza = PizzaBLL.GetPizzaById((int)cmbPizza.SelectedValue), Pedido = pedido, Quantidade = (int)numQtd.Value });
-            PedidoBLL.PedidoDB.Add(pedido);
-            txtPedido.Text = pedido.NumeroPedido;
-            cmbPedidos.Refresh();
+            if (cmbPizza.Text != null)
+            {
+                pedido.Pizzas.Add(new PedidoPizzaModel()
+                {
+                    IdPedido = PedidoBLL.PedidoDB.Count + 1,
+                    ComBorda = ckbBorda.Checked,
+                    IdPizza = (int)cmbPizza.SelectedValue,
+                    Pizza = PizzaBLL.GetPizzaById((int)cmbPizza.SelectedValue),
+                    Pedido = pedido,
+                    Quantidade = (int)numQtd.Value
+                });
+                PedidoBLL.PedidoDB.Add(pedido);
+                txtPedido.Text = pedido.NumeroPedido;
+                cmbPizza.SelectedIndex = -1;
+
+                cmbPedidos.Refresh();
+            }
+            
         }
 
         private void lstNotify_DoubleClick(object sender, EventArgs e)
         {
-            aviso.pushMessage("teste asdfasdfasdf", lblAlert);
             tmAlert.Enabled = true;
-            
+
         }
 
         private void lblAddPizza_MouseEnter(object sender, EventArgs e)
         {
-            lblAddPizza.BackColor = ColorTranslator.FromHtml("#fff9c4");
+            lblAddPizza.BackColor = ColorTranslator.FromHtml("#ccff90");
         }
 
         private void lblAddPizza_MouseLeave(object sender, EventArgs e)
         {
-            lblAddPizza.BackColor = ColorTranslator.FromHtml("#ffff8d");
+            lblAddPizza.BackColor = ColorTranslator.FromHtml("#b2ff59");
         }
 
         private void lblLimparDados_MouseEnter(object sender, EventArgs e)
         {
-            lblLimparDados.BackColor = ColorTranslator.FromHtml("#ccff90");
+            lblLimparDados.BackColor = ColorTranslator.FromHtml("#F44336");
         }
 
         private void lblLimparDados_MouseLeave(object sender, EventArgs e)
         {
-              lblLimparDados.BackColor = ColorTranslator.FromHtml("#b2ff59");
+            lblLimparDados.BackColor = ColorTranslator.FromHtml("#E53935");
         }
 
         private void lblExcluirPedido_MouseEnter(object sender, EventArgs e)
@@ -543,12 +567,138 @@ namespace Pizzaria
             lblExcluirPedido.BackColor = ColorTranslator.FromHtml("#ff5252");
         }
 
+        private void lblConcluirPedido_Click(object sender, EventArgs e)
+        {
+            PedidoModel pedido;
+            if (string.IsNullOrEmpty(txtPedido.Text))
+            {
+                //Faz novo pedido
+                Notificacao.pushMessage("Informe o pedido.", this.lblAlert);
+                return;
+                //Adicionar campo de observação
+            }
+            else
+            {
+                //Obtem Pedido
+                pedido = PedidoBLL.GetPedidoPorNumero(txtPedido.Text);
+
+                if (pedido == null)
+                {
+                    MessageBox.Show("Pedido Inválido!");
+                    return;
+                }
+            }
+
+            if (pedido.Pizzas == null)
+                Notificacao.pushMessage("Pedido deve possuir Pizzas.", this.lblAlert);
+
+            foreach (var pizzaPed in pedido.Pizzas)
+            {
+                foreach (var pizza in pizzaPed.Pizza.Receita.Ingredientes)
+                {
+                    EstoqueBLL.DeduzirQuantidade(pizza.IdIngrediente, pizzaPed.Quantidade, pizza.Quantidade);
+                }
+            }
+
+            txtPedido.Clear();
+            cmbPizza.SelectedIndex = -1;
+            ckbBorda.Checked = false;
+
+        }
+
+        private void cmbPedidos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPedidos.SelectedValue != null)
+            {
+                var Pedido = PedidoBLL.GetPorId((int)cmbPedidos.SelectedValue);
+
+
+                BindingSource bSourcePizza = new BindingSource();
+                bSourcePizza.DataSource = Pedido.Pizzas;
+                lstPedidos.DataSource = bSourcePizza;
+
+                //lstPedidos.DataSource = Pedido.Pizzas;
+                lstPedidos.DisplayMember = "Pizza";
+                lstPedidos.ValueMember = "IdPedidoPizza";
+            }
+        }
+
+        private void lblFinalizarPedido_Click(object sender, EventArgs e)
+        {
+            if (cmbPedidos.SelectedValue != null)
+            {
+                var Pedido = PedidoBLL.GetPorId((int)cmbPedidos.SelectedValue);
+                PedidoBLL.PedidoDB.Remove(Pedido);
+
+                BindingSource bSourcePizza = new BindingSource();
+                bSourcePizza.DataSource = Pedido.Pizzas;
+                lstPedidos.DataSource = bSourcePizza;
+
+                Pedido.Pizzas.Clear();
+                Pedido = null;
+                cmbPedidos.Refresh();
+
+                txtPedido.Text = "";
+                cmbPizza.SelectedIndex = -1;
+                cmbPedidos.SelectedIndex = -1;
+            }
+        }
+
+        private void lblExcluirPedido_Click(object sender, EventArgs e)
+        {
+            if (cmbPedidos.SelectedValue != null && lstPedidos.SelectedIndex >= 0)
+            {
+                var Pedido = PedidoBLL.GetPorId((int)cmbPedidos.SelectedValue);
+                var id = lstPedidos.SelectedIndex;
+
+                var pizza = Pedido.Pizzas[id];
+
+                foreach (var ingrediente in pizza.Pizza.Receita.Ingredientes)
+                {
+                    EstoqueBLL.AdicionarQuantidade(ingrediente.IdIngrediente, pizza.Quantidade, ingrediente.Quantidade);
+                }
+
+                Pedido.Pizzas.RemoveAt(id);
+
+
+                BindingSource bSourcePizza = new BindingSource();
+                bSourcePizza.DataSource = Pedido.Pizzas;
+                lstPedidos.DataSource = bSourcePizza;
+            }
+        }
+
+        private void lblConcluirPedido_MouseEnter(object sender, EventArgs e)
+        {
+            lblConcluirPedido.BackColor = ColorTranslator.FromHtml("#64B5F6");
+        }
+
+        private void lblConcluirPedido_MouseLeave(object sender, EventArgs e)
+        {
+            lblConcluirPedido.BackColor = ColorTranslator.FromHtml("#2196F3");
+        }
+
+        private void panPedidos_Leave(object sender, EventArgs e)
+        {
+            lblExcluirPedido.Enabled = false;
+            lblExcluirPedido.Visible = false;
+        }
+
+        private void lblFinalizarPedido_MouseEnter(object sender, EventArgs e)
+        {
+            lblFinalizarPedido.BackColor = ColorTranslator.FromHtml("#ccff90");
+        }
+
+        private void lblFinalizarPedido_MouseLeave(object sender, EventArgs e)
+        {
+            lblFinalizarPedido.BackColor = ColorTranslator.FromHtml("#b2ff59");
+        }
+
         private void tmPedidos_Tick(object sender, EventArgs e)
         {
             switch (pedidos)
             {
                 case true:
-                    if (panPedidos.Height == 0)
+                    if (panPedidos.Height <= 0)
                     {
                         pedidos = false;
                         tmPedidos.Enabled = false;
@@ -560,18 +710,37 @@ namespace Pizzaria
                     break;
                 case false:
 
-                    if (notify) tmNotify.Enabled = true;
+                    if (cmbPedidos != null)
+                    {
+                        if (notify) tmNotify.Enabled = true;
 
-                    if (panPedidos.Height == 275)
+                        if (panPedidos.Height >= 350)
+                        {
+                            pedidos = true;
+                            tmPedidos.Enabled = false;
+                        }
+                        else
+                        {
+                            panPedidos.Height += 25;
+                        }
+                        break;
+                    } else
                     {
-                        pedidos = true;
-                        tmPedidos.Enabled = false;
+                        if (notify) tmNotify.Enabled = true;
+
+                        if (panPedidos.Height >= 150)
+                        {
+                            pedidos = true;
+                            tmPedidos.Enabled = false;
+                        }
+                        else
+                        {
+                            panPedidos.Height += 25;
+                        }
+                        break;
                     }
-                    else
-                    {
-                        panPedidos.Height += 25;
-                    }
-                    break;
+
+                    
             }
         }
 
@@ -579,8 +748,6 @@ namespace Pizzaria
         {
             txtSearch.BackColor = ColorTranslator.FromHtml("#A1887F");
         }
-
-
 
         private void lblPedido_Click(object sender, EventArgs e)
         {

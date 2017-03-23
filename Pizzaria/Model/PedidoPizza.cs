@@ -8,6 +8,8 @@ namespace Pizzaria.Model
 {
     public class PedidoPizzaModel
     {
+        public int IdPedidoPizza { get; set; }
+
         public int IdPedido { get; set; }
 
         public int IdPizza { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Pizzaria.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,9 @@ namespace Pizzaria.Controle
 {
     public class PedidoBLL
     {
-        public static List<PedidoModel> PedidoDB { get; set; }
+        private static int Incremento = 0;
+        public static BindingList<PedidoModel> PedidoDB { get; set; }
+        
 
         public static PedidoModel GetPorId(int id)
         {
@@ -18,9 +21,6 @@ namespace Pizzaria.Controle
 
         public static string GetUltimoNumero()
         {
-            if (PedidoDB == null)
-                PedidoDB = new List<PedidoModel>();
-
             return string.Concat("PED - ", PedidoDB.Count.ToString("000000"));
         }
 

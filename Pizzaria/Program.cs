@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Pizzaria.Controle;
 using Pizzaria.Model;
+using System.ComponentModel;
 
 namespace Pizzaria
 {
@@ -35,23 +36,24 @@ namespace Pizzaria
             ReceitaBLL.ReceitaDB.Add(new ReceitaModel() { IdReceita = ++idReceita, Nome = "Pizzaria C# Mussarela", Ingredientes = new List<ReceitaIngredienteModel>() });
 
             ReceitaIngredienteBLL.ReceitaIngredienteDB = new List<ReceitaIngredienteModel>();
-            ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, IdIngrediente = 1, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(1) });
-            ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, IdIngrediente = 2, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(2) });
-            ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, IdIngrediente = 3, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(3) });
-            ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, IdIngrediente = 4, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(4) });
+            ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, Quantidade = 100, IdIngrediente = 1, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(1) });
+            ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, Quantidade = 100, IdIngrediente = 2, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(2) });
+            ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, Quantidade = 100, IdIngrediente = 3, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(3) });
+            ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, Quantidade = 100, IdIngrediente = 4, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(4) });
             try { ReceitaBLL.GetPorId(idReceita).Ingredientes = ReceitaIngredienteBLL.GetByReceitaId(idReceita); } catch { }
             PizzaBLL.PizzaDB = new List<PizzaModel>();
             PizzaBLL.PizzaDB.Add(new PizzaModel() { IdPizza = idPizza++, Nome = "Pizzaria C# Mussarela 1", Sabor = "Mussarela", IdReceita = idReceita, Receita = ReceitaBLL.GetPorId(idReceita) });
             PizzaBLL.PizzaDB.Add(new PizzaModel() { IdPizza = idPizza++, Nome = "Pizzaria C# Mussarela 2", Sabor = "Mussarela", IdReceita = idReceita, Receita = ReceitaBLL.GetPorId(idReceita) });
             PizzaBLL.PizzaDB.Add(new PizzaModel() { IdPizza = idPizza++, Nome = "Pizzaria C# Mussarela 3", Sabor = "Mussarela", IdReceita = idReceita, Receita = ReceitaBLL.GetPorId(idReceita) });
 
-            EstoqueBLL.EstoqueDB = new List<EstoqueModel>();
+            EstoqueBLL.EstoqueDB = new BindingList<EstoqueModel>();
             for (int i = 1; i < idIngrediente; i++)
             {
-                EstoqueBLL.EstoqueDB.Add(new EstoqueModel() {IdEstoque= idEstoque++ , IdIngrediente = i, Ingrediente = IngredienteBLL.GetIngredienteById(i), Quantidade = 100000});
+                EstoqueBLL.EstoqueDB.Add(new EstoqueModel() { IdEstoque = idEstoque++, IdIngrediente = i, Ingrediente = IngredienteBLL.GetIngredienteById(i), Quantidade = 100000 });
             }
 
-            PedidoBLL.PedidoDB = new List<PedidoModel>();
+            PedidoBLL.PedidoDB = new BindingList<PedidoModel>();
+            //PedidoBLL.PedidoDB.Add(new PedidoModel() { IdPedido = 1, NumeroPedido = "PED - 000000" });
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

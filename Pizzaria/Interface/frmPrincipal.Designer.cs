@@ -42,14 +42,21 @@
             this.lblClear = new System.Windows.Forms.Label();
             this.panEstoque = new System.Windows.Forms.Panel();
             this.dgvEstoque = new System.Windows.Forms.DataGridView();
+            this.idEstoqueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idIngredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ckbAcabando = new System.Windows.Forms.CheckBox();
-            this.lblLimparDados = new System.Windows.Forms.Label();
             this.panPedidos = new System.Windows.Forms.Panel();
+            this.lblFinalizarPedido = new System.Windows.Forms.Label();
+            this.cmbPedidos = new System.Windows.Forms.ComboBox();
             this.lblExcluirPedido = new System.Windows.Forms.Label();
             this.lstPedidos = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmbPedidos = new System.Windows.Forms.ComboBox();
+            this.lblConcluirPedido = new System.Windows.Forms.Label();
+            this.lblLimparDados = new System.Windows.Forms.Label();
             this.numQtd = new System.Windows.Forms.NumericUpDown();
             this.lblQtd = new System.Windows.Forms.Label();
             this.ckbBorda = new System.Windows.Forms.CheckBox();
@@ -83,11 +90,6 @@
             this.tmEstoque = new System.Windows.Forms.Timer(this.components);
             this.atualizaHora = new System.Windows.Forms.Timer(this.components);
             this.tmPedidos = new System.Windows.Forms.Timer(this.components);
-            this.idEstoqueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idIngredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ingredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).BeginInit();
@@ -97,6 +99,7 @@
             this.panNotify.SuspendLayout();
             this.panEstoque.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
             this.panPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).BeginInit();
             this.panAlert.SuspendLayout();
@@ -109,7 +112,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panTitleBar
@@ -191,9 +193,10 @@
             // panPedido
             // 
             this.panPedido.BackColor = System.Drawing.Color.White;
-            this.panPedido.Controls.Add(this.panPedidos);
             this.panPedido.Controls.Add(this.panNotify);
             this.panPedido.Controls.Add(this.panEstoque);
+            this.panPedido.Controls.Add(this.panPedidos);
+            this.panPedido.Controls.Add(this.lblConcluirPedido);
             this.panPedido.Controls.Add(this.lblLimparDados);
             this.panPedido.Controls.Add(this.numQtd);
             this.panPedido.Controls.Add(this.lblQtd);
@@ -280,7 +283,7 @@
             this.panEstoque.Controls.Add(this.ckbAcabando);
             this.panEstoque.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panEstoque.ForeColor = System.Drawing.Color.DimGray;
-            this.panEstoque.Location = new System.Drawing.Point(764, 0);
+            this.panEstoque.Location = new System.Drawing.Point(287, 360);
             this.panEstoque.Margin = new System.Windows.Forms.Padding(0);
             this.panEstoque.Name = "panEstoque";
             this.panEstoque.Size = new System.Drawing.Size(922, 583);
@@ -295,13 +298,47 @@
             this.dgvEstoque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idEstoqueDataGridViewTextBoxColumn,
             this.idIngredienteDataGridViewTextBoxColumn,
-            this.quantidadeDataGridViewTextBoxColumn,
-            this.ingredienteDataGridViewTextBoxColumn});
+            this.ingredienteDataGridViewTextBoxColumn,
+            this.quantidadeDataGridViewTextBoxColumn});
             this.dgvEstoque.DataSource = this.estoqueModelBindingSource;
-            this.dgvEstoque.Location = new System.Drawing.Point(97, 75);
+            this.dgvEstoque.Location = new System.Drawing.Point(88, 56);
             this.dgvEstoque.Name = "dgvEstoque";
             this.dgvEstoque.Size = new System.Drawing.Size(594, 410);
             this.dgvEstoque.TabIndex = 2;
+            // 
+            // idEstoqueDataGridViewTextBoxColumn
+            // 
+            this.idEstoqueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idEstoqueDataGridViewTextBoxColumn.DataPropertyName = "IdEstoque";
+            this.idEstoqueDataGridViewTextBoxColumn.HeaderText = "IdEstoque";
+            this.idEstoqueDataGridViewTextBoxColumn.Name = "idEstoqueDataGridViewTextBoxColumn";
+            this.idEstoqueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idIngredienteDataGridViewTextBoxColumn
+            // 
+            this.idIngredienteDataGridViewTextBoxColumn.DataPropertyName = "IdIngrediente";
+            this.idIngredienteDataGridViewTextBoxColumn.HeaderText = "IdIngrediente";
+            this.idIngredienteDataGridViewTextBoxColumn.Name = "idIngredienteDataGridViewTextBoxColumn";
+            this.idIngredienteDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // ingredienteDataGridViewTextBoxColumn
+            // 
+            this.ingredienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ingredienteDataGridViewTextBoxColumn.DataPropertyName = "Ingrediente";
+            this.ingredienteDataGridViewTextBoxColumn.HeaderText = "Ingrediente";
+            this.ingredienteDataGridViewTextBoxColumn.Name = "ingredienteDataGridViewTextBoxColumn";
+            this.ingredienteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantidadeDataGridViewTextBoxColumn
+            // 
+            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
+            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
+            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
+            this.quantidadeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // estoqueModelBindingSource
+            // 
+            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
             // 
             // ckbAcabando
             // 
@@ -314,37 +351,64 @@
             this.ckbAcabando.Text = "Itens Acabando";
             this.ckbAcabando.UseVisualStyleBackColor = true;
             // 
-            // lblLimparDados
-            // 
-            this.lblLimparDados.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblLimparDados.AutoSize = true;
-            this.lblLimparDados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblLimparDados.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLimparDados.ForeColor = System.Drawing.Color.DimGray;
-            this.lblLimparDados.Location = new System.Drawing.Point(283, 336);
-            this.lblLimparDados.Name = "lblLimparDados";
-            this.lblLimparDados.Padding = new System.Windows.Forms.Padding(10);
-            this.lblLimparDados.Size = new System.Drawing.Size(130, 39);
-            this.lblLimparDados.TabIndex = 18;
-            this.lblLimparDados.Text = "Limpar Dados";
-            this.lblLimparDados.Click += new System.EventHandler(this.lblLimparDados_Click);
-            this.lblLimparDados.MouseEnter += new System.EventHandler(this.lblLimparDados_MouseEnter);
-            this.lblLimparDados.MouseLeave += new System.EventHandler(this.lblLimparDados_MouseLeave);
-            // 
             // panPedidos
             // 
             this.panPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panPedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panPedidos.Controls.Add(this.lblFinalizarPedido);
+            this.panPedidos.Controls.Add(this.cmbPedidos);
             this.panPedidos.Controls.Add(this.lblExcluirPedido);
             this.panPedidos.Controls.Add(this.lstPedidos);
             this.panPedidos.Controls.Add(this.label5);
             this.panPedidos.Controls.Add(this.label4);
-            this.panPedidos.Controls.Add(this.cmbPedidos);
-            this.panPedidos.Location = new System.Drawing.Point(700, 0);
+            this.panPedidos.Location = new System.Drawing.Point(625, 0);
             this.panPedidos.Margin = new System.Windows.Forms.Padding(0);
             this.panPedidos.Name = "panPedidos";
-            this.panPedidos.Size = new System.Drawing.Size(225, 0);
+            this.panPedidos.Size = new System.Drawing.Size(300, 0);
             this.panPedidos.TabIndex = 17;
+            this.panPedidos.Leave += new System.EventHandler(this.panPedidos_Leave);
+            // 
+            // lblFinalizarPedido
+            // 
+            this.lblFinalizarPedido.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblFinalizarPedido.AutoSize = true;
+            this.lblFinalizarPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblFinalizarPedido.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinalizarPedido.ForeColor = System.Drawing.Color.DimGray;
+            this.lblFinalizarPedido.Location = new System.Drawing.Point(144, 297);
+            this.lblFinalizarPedido.Name = "lblFinalizarPedido";
+            this.lblFinalizarPedido.Padding = new System.Windows.Forms.Padding(10);
+            this.lblFinalizarPedido.Size = new System.Drawing.Size(144, 39);
+            this.lblFinalizarPedido.TabIndex = 24;
+            this.lblFinalizarPedido.Text = "Finalizar Pedido";
+            this.lblFinalizarPedido.Click += new System.EventHandler(this.lblFinalizarPedido_Click);
+            this.lblFinalizarPedido.MouseEnter += new System.EventHandler(this.lblFinalizarPedido_MouseEnter);
+            this.lblFinalizarPedido.MouseLeave += new System.EventHandler(this.lblFinalizarPedido_MouseLeave);
+            // 
+            // cmbPedidos
+            // 
+            this.cmbPedidos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbPedidos.AutoCompleteCustomSource.AddRange(new string[] {
+            "Mussarela",
+            "Calabresa",
+            "Escarola",
+            "Portuguesa"});
+            this.cmbPedidos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbPedidos.BackColor = System.Drawing.Color.White;
+            this.cmbPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbPedidos.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPedidos.ForeColor = System.Drawing.Color.DimGray;
+            this.cmbPedidos.FormattingEnabled = true;
+            this.cmbPedidos.Items.AddRange(new object[] {
+            "Mussarela",
+            "Calabresa",
+            "Escarola",
+            "Portuguesa"});
+            this.cmbPedidos.Location = new System.Drawing.Point(123, 20);
+            this.cmbPedidos.Name = "cmbPedidos";
+            this.cmbPedidos.Size = new System.Drawing.Size(161, 33);
+            this.cmbPedidos.TabIndex = 23;
+            this.cmbPedidos.SelectedIndexChanged += new System.EventHandler(this.cmbPedidos_SelectedIndexChanged);
             // 
             // lblExcluirPedido
             // 
@@ -353,13 +417,14 @@
             this.lblExcluirPedido.Enabled = false;
             this.lblExcluirPedido.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExcluirPedido.ForeColor = System.Drawing.Color.White;
-            this.lblExcluirPedido.Location = new System.Drawing.Point(79, 231);
+            this.lblExcluirPedido.Location = new System.Drawing.Point(15, 302);
             this.lblExcluirPedido.Name = "lblExcluirPedido";
             this.lblExcluirPedido.Padding = new System.Windows.Forms.Padding(5);
-            this.lblExcluirPedido.Size = new System.Drawing.Size(67, 29);
+            this.lblExcluirPedido.Size = new System.Drawing.Size(110, 29);
             this.lblExcluirPedido.TabIndex = 22;
-            this.lblExcluirPedido.Text = "Excluir";
+            this.lblExcluirPedido.Text = "Excluir Pizza";
             this.lblExcluirPedido.Visible = false;
+            this.lblExcluirPedido.Click += new System.EventHandler(this.lblExcluirPedido_Click);
             this.lblExcluirPedido.MouseEnter += new System.EventHandler(this.lblExcluirPedido_MouseEnter);
             this.lblExcluirPedido.MouseLeave += new System.EventHandler(this.lblExcluirPedido_MouseLeave);
             // 
@@ -371,13 +436,9 @@
             this.lstPedidos.ForeColor = System.Drawing.Color.DimGray;
             this.lstPedidos.FormattingEnabled = true;
             this.lstPedidos.ItemHeight = 19;
-            this.lstPedidos.Items.AddRange(new object[] {
-            "Mussarela",
-            "Milho",
-            "Portuguesa"});
             this.lstPedidos.Location = new System.Drawing.Point(10, 114);
             this.lstPedidos.Name = "lstPedidos";
-            this.lstPedidos.Size = new System.Drawing.Size(205, 95);
+            this.lstPedidos.Size = new System.Drawing.Size(280, 114);
             this.lstPedidos.TabIndex = 21;
             this.lstPedidos.SelectedIndexChanged += new System.EventHandler(this.lstPedidos_SelectedIndexChanged);
             // 
@@ -388,36 +449,54 @@
             this.label5.ForeColor = System.Drawing.Color.DimGray;
             this.label5.Location = new System.Drawing.Point(72, 75);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 23);
+            this.label5.Size = new System.Drawing.Size(67, 23);
             this.label5.TabIndex = 20;
-            this.label5.Text = "Pedidos";
+            this.label5.Text = "Pizzas";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(3, 28);
+            this.label4.Location = new System.Drawing.Point(32, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 19);
             this.label4.TabIndex = 19;
             this.label4.Text = "Nº Pedido";
             // 
-            // cmbPedidos
+            // lblConcluirPedido
             // 
-            this.cmbPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbPedidos.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPedidos.ForeColor = System.Drawing.Color.DimGray;
-            this.cmbPedidos.FormattingEnabled = true;
-            this.cmbPedidos.Items.AddRange(new object[] {
-            "Jeriel",
-            "Diego",
-            "Lucas"});
-            this.cmbPedidos.Location = new System.Drawing.Point(85, 23);
-            this.cmbPedidos.Name = "cmbPedidos";
-            this.cmbPedidos.Size = new System.Drawing.Size(121, 27);
-            this.cmbPedidos.TabIndex = 18;
-            this.cmbPedidos.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.lblConcluirPedido.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblConcluirPedido.AutoSize = true;
+            this.lblConcluirPedido.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblConcluirPedido.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConcluirPedido.ForeColor = System.Drawing.Color.White;
+            this.lblConcluirPedido.Location = new System.Drawing.Point(501, 336);
+            this.lblConcluirPedido.Name = "lblConcluirPedido";
+            this.lblConcluirPedido.Padding = new System.Windows.Forms.Padding(10);
+            this.lblConcluirPedido.Size = new System.Drawing.Size(141, 39);
+            this.lblConcluirPedido.TabIndex = 19;
+            this.lblConcluirPedido.Text = "Concluir Pedido";
+            this.lblConcluirPedido.Click += new System.EventHandler(this.lblConcluirPedido_Click);
+            this.lblConcluirPedido.MouseEnter += new System.EventHandler(this.lblConcluirPedido_MouseEnter);
+            this.lblConcluirPedido.MouseLeave += new System.EventHandler(this.lblConcluirPedido_MouseLeave);
+            // 
+            // lblLimparDados
+            // 
+            this.lblLimparDados.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblLimparDados.AutoSize = true;
+            this.lblLimparDados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblLimparDados.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLimparDados.ForeColor = System.Drawing.Color.White;
+            this.lblLimparDados.Location = new System.Drawing.Point(283, 336);
+            this.lblLimparDados.Name = "lblLimparDados";
+            this.lblLimparDados.Padding = new System.Windows.Forms.Padding(10);
+            this.lblLimparDados.Size = new System.Drawing.Size(130, 39);
+            this.lblLimparDados.TabIndex = 18;
+            this.lblLimparDados.Text = "Limpar Dados";
+            this.lblLimparDados.Click += new System.EventHandler(this.lblLimparDados_Click);
+            this.lblLimparDados.MouseEnter += new System.EventHandler(this.lblLimparDados_MouseEnter);
+            this.lblLimparDados.MouseLeave += new System.EventHandler(this.lblLimparDados_MouseLeave);
             // 
             // numQtd
             // 
@@ -525,7 +604,7 @@
             this.lblAddPizza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lblAddPizza.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddPizza.ForeColor = System.Drawing.Color.DimGray;
-            this.lblAddPizza.Location = new System.Drawing.Point(501, 336);
+            this.lblAddPizza.Location = new System.Drawing.Point(670, 140);
             this.lblAddPizza.Name = "lblAddPizza";
             this.lblAddPizza.Padding = new System.Windows.Forms.Padding(10);
             this.lblAddPizza.Size = new System.Drawing.Size(144, 39);
@@ -820,35 +899,6 @@
             this.tmPedidos.Interval = 1;
             this.tmPedidos.Tick += new System.EventHandler(this.tmPedidos_Tick);
             // 
-            // idEstoqueDataGridViewTextBoxColumn
-            // 
-            this.idEstoqueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idEstoqueDataGridViewTextBoxColumn.DataPropertyName = "IdEstoque";
-            this.idEstoqueDataGridViewTextBoxColumn.HeaderText = "IdEstoque";
-            this.idEstoqueDataGridViewTextBoxColumn.Name = "idEstoqueDataGridViewTextBoxColumn";
-            // 
-            // idIngredienteDataGridViewTextBoxColumn
-            // 
-            this.idIngredienteDataGridViewTextBoxColumn.DataPropertyName = "IdIngrediente";
-            this.idIngredienteDataGridViewTextBoxColumn.HeaderText = "IdIngrediente";
-            this.idIngredienteDataGridViewTextBoxColumn.Name = "idIngredienteDataGridViewTextBoxColumn";
-            // 
-            // quantidadeDataGridViewTextBoxColumn
-            // 
-            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
-            // 
-            // ingredienteDataGridViewTextBoxColumn
-            // 
-            this.ingredienteDataGridViewTextBoxColumn.DataPropertyName = "Ingrediente";
-            this.ingredienteDataGridViewTextBoxColumn.HeaderText = "Ingrediente";
-            this.ingredienteDataGridViewTextBoxColumn.Name = "ingredienteDataGridViewTextBoxColumn";
-            // 
-            // estoqueModelBindingSource
-            // 
-            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -875,6 +925,7 @@
             this.panEstoque.ResumeLayout(false);
             this.panEstoque.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
             this.panPedidos.ResumeLayout(false);
             this.panPedidos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).EndInit();
@@ -892,7 +943,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -945,7 +995,6 @@
         private System.Windows.Forms.PictureBox ptbCarrinho;
         private System.Windows.Forms.Panel panPedidos;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbPedidos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblExcluirPedido;
         private System.Windows.Forms.ListBox lstPedidos;
@@ -956,8 +1005,11 @@
         private System.Windows.Forms.BindingSource estoqueModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idEstoqueDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idIngredienteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantidadeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ingredienteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantidadeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label lblConcluirPedido;
+        private System.Windows.Forms.ComboBox cmbPedidos;
+        private System.Windows.Forms.Label lblFinalizarPedido;
     }
 }
 

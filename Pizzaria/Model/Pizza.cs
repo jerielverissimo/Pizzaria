@@ -17,5 +17,10 @@ namespace Pizzaria.Model
         public string Sabor { get; set; }
 
         public ReceitaModel Receita { get; set; }
+
+        public override string ToString()
+        {
+            return this.Nome;
+        }
     }
 }

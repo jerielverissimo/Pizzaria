@@ -13,5 +13,11 @@ namespace Pizzaria.Model
         public string Nome { get; set; }
 
         public string UnidadeMedida { get; set; }
+
+        public override string ToString()
+        {
+            return this.Nome;
+        }
     }
+
 }
