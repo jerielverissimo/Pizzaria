@@ -12,7 +12,7 @@ namespace Pizzaria.Controle
     {
         private static int Incremento = 0;
         public static BindingList<PedidoModel> PedidoDB { get; set; }
-        
+
 
         public static PedidoModel GetPorId(int id)
         {
@@ -21,7 +21,7 @@ namespace Pizzaria.Controle
 
         public static string GetUltimoNumero()
         {
-            return string.Concat("PED - ", PedidoDB.Count.ToString("000000"));
+            return string.Concat("PED - ", Incremento++.ToString("000000"));
         }
 
         public static PedidoModel GetPedidoPorNumero(string NumeroPedido)

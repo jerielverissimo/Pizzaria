@@ -30,22 +30,33 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panTitleBar = new System.Windows.Forms.Panel();
+            this.ptbMini = new System.Windows.Forms.PictureBox();
+            this.ptbMaxiRest = new System.Windows.Forms.PictureBox();
+            this.ptbExit = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panPrincipal = new System.Windows.Forms.Panel();
             this.panPedido = new System.Windows.Forms.Panel();
             this.panNotify = new System.Windows.Forms.Panel();
             this.lstNotify = new System.Windows.Forms.ListBox();
             this.lblNotify = new System.Windows.Forms.Label();
+            this.lblClear = new System.Windows.Forms.Label();
             this.panEstoque = new System.Windows.Forms.Panel();
             this.dgvEstoque = new System.Windows.Forms.DataGridView();
+            this.idEstoqueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idIngredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ckbAcabando = new System.Windows.Forms.CheckBox();
             this.panPedidos = new System.Windows.Forms.Panel();
+            this.lblPedidos = new System.Windows.Forms.Label();
+            this.lblAddPedido = new System.Windows.Forms.Label();
+            this.ptbPedidos = new System.Windows.Forms.PictureBox();
             this.lblFinalizarPedido = new System.Windows.Forms.Label();
             this.cmbPedidos = new System.Windows.Forms.ComboBox();
             this.lblExcluirPedido = new System.Windows.Forms.Label();
             this.lstPedidos = new System.Windows.Forms.ListBox();
             this.lblListaPizzas = new System.Windows.Forms.Label();
-            this.lblPedidos = new System.Windows.Forms.Label();
             this.lblConcluirPedido = new System.Windows.Forms.Label();
             this.lblLimparDados = new System.Windows.Forms.Label();
             this.numQtd = new System.Windows.Forms.NumericUpDown();
@@ -58,12 +69,21 @@
             this.lblAddPizza = new System.Windows.Forms.Label();
             this.panAlert = new System.Windows.Forms.Panel();
             this.lblAlert = new System.Windows.Forms.Label();
+            this.ptbFechar = new System.Windows.Forms.PictureBox();
+            this.ptbAlert = new System.Windows.Forms.PictureBox();
             this.panSearch = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.panSideBar = new System.Windows.Forms.Panel();
             this.lblData = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
+            this.lblPedido = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
             this.panActionBar = new System.Windows.Forms.Panel();
+            this.ptbCarrinho = new System.Windows.Forms.PictureBox();
+            this.ptbNotify = new System.Windows.Forms.PictureBox();
+            this.ptbSearch = new System.Windows.Forms.PictureBox();
+            this.ptbMenu = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.tmMenuSide = new System.Windows.Forms.Timer(this.components);
             this.tmNotify = new System.Windows.Forms.Timer(this.components);
@@ -72,49 +92,29 @@
             this.tmEstoque = new System.Windows.Forms.Timer(this.components);
             this.atualizaHora = new System.Windows.Forms.Timer(this.components);
             this.tmPedidos = new System.Windows.Forms.Timer(this.components);
-            this.lblAddPedido = new System.Windows.Forms.Label();
-            this.lblClear = new System.Windows.Forms.Label();
-            this.idEstoqueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idIngredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ingredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ptbPedidos = new System.Windows.Forms.PictureBox();
-            this.ptbFechar = new System.Windows.Forms.PictureBox();
-            this.ptbAlert = new System.Windows.Forms.PictureBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.lblPedido = new System.Windows.Forms.Label();
-            this.lblStock = new System.Windows.Forms.Label();
-            this.ptbCarrinho = new System.Windows.Forms.PictureBox();
-            this.ptbNotify = new System.Windows.Forms.PictureBox();
-            this.ptbSearch = new System.Windows.Forms.PictureBox();
-            this.ptbMenu = new System.Windows.Forms.PictureBox();
-            this.ptbMini = new System.Windows.Forms.PictureBox();
-            this.ptbMaxiRest = new System.Windows.Forms.PictureBox();
-            this.ptbExit = new System.Windows.Forms.PictureBox();
             this.panTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).BeginInit();
             this.panPrincipal.SuspendLayout();
             this.panPedido.SuspendLayout();
             this.panNotify.SuspendLayout();
             this.panEstoque.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
             this.panPedidos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).BeginInit();
             this.panAlert.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbFechar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAlert)).BeginInit();
             this.panSearch.SuspendLayout();
             this.panSideBar.SuspendLayout();
             this.panActionBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPedidos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbFechar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbAlert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbCarrinho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).BeginInit();
             this.SuspendLayout();
             // 
             // panTitleBar
@@ -133,6 +133,41 @@
             this.panTitleBar.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panTitleBar_MouseDoubleClick);
             this.panTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panTitleBar_MouseDown);
             this.panTitleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panTitleBar_MouseMove);
+            // 
+            // ptbMini
+            // 
+            this.ptbMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptbMini.Image = global::Pizzaria.Properties.Resources.window_minimize;
+            this.ptbMini.Location = new System.Drawing.Point(906, 1);
+            this.ptbMini.Name = "ptbMini";
+            this.ptbMini.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.ptbMini.Size = new System.Drawing.Size(24, 24);
+            this.ptbMini.TabIndex = 3;
+            this.ptbMini.TabStop = false;
+            // 
+            // ptbMaxiRest
+            // 
+            this.ptbMaxiRest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptbMaxiRest.Image = global::Pizzaria.Properties.Resources.window_maximize;
+            this.ptbMaxiRest.Location = new System.Drawing.Point(936, 0);
+            this.ptbMaxiRest.Name = "ptbMaxiRest";
+            this.ptbMaxiRest.Size = new System.Drawing.Size(24, 24);
+            this.ptbMaxiRest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbMaxiRest.TabIndex = 2;
+            this.ptbMaxiRest.TabStop = false;
+            this.ptbMaxiRest.Click += new System.EventHandler(this.ptbMaxiRest_Click);
+            // 
+            // ptbExit
+            // 
+            this.ptbExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptbExit.Image = global::Pizzaria.Properties.Resources.window_close;
+            this.ptbExit.Location = new System.Drawing.Point(966, 0);
+            this.ptbExit.Name = "ptbExit";
+            this.ptbExit.Size = new System.Drawing.Size(24, 24);
+            this.ptbExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbExit.TabIndex = 1;
+            this.ptbExit.TabStop = false;
+            this.ptbExit.Click += new System.EventHandler(this.ptbExit_Click);
             // 
             // lblTitle
             // 
@@ -194,10 +229,10 @@
             this.panNotify.Controls.Add(this.lstNotify);
             this.panNotify.Controls.Add(this.lblNotify);
             this.panNotify.Controls.Add(this.lblClear);
-            this.panNotify.Location = new System.Drawing.Point(675, 0);
+            this.panNotify.Location = new System.Drawing.Point(483, 0);
             this.panNotify.Margin = new System.Windows.Forms.Padding(0);
             this.panNotify.Name = "panNotify";
-            this.panNotify.Size = new System.Drawing.Size(250, 0);
+            this.panNotify.Size = new System.Drawing.Size(442, 0);
             this.panNotify.TabIndex = 1;
             // 
             // lstNotify
@@ -214,10 +249,10 @@
             "Calabresa",
             "Cebola",
             "Tomate"});
-            this.lstNotify.Location = new System.Drawing.Point(10, 75);
+            this.lstNotify.Location = new System.Drawing.Point(10, 60);
             this.lstNotify.Margin = new System.Windows.Forms.Padding(10);
             this.lstNotify.Name = "lstNotify";
-            this.lstNotify.Size = new System.Drawing.Size(230, 247);
+            this.lstNotify.Size = new System.Drawing.Size(482, 247);
             this.lstNotify.TabIndex = 10;
             this.lstNotify.DoubleClick += new System.EventHandler(this.lstNotify_DoubleClick);
             // 
@@ -227,11 +262,25 @@
             this.lblNotify.AutoSize = true;
             this.lblNotify.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNotify.ForeColor = System.Drawing.Color.White;
-            this.lblNotify.Location = new System.Drawing.Point(60, 29);
+            this.lblNotify.Location = new System.Drawing.Point(156, 29);
             this.lblNotify.Name = "lblNotify";
             this.lblNotify.Size = new System.Drawing.Size(131, 25);
             this.lblNotify.TabIndex = 0;
             this.lblNotify.Text = "Notificações";
+            // 
+            // lblClear
+            // 
+            this.lblClear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblClear.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClear.ForeColor = System.Drawing.Color.DimGray;
+            this.lblClear.Image = global::Pizzaria.Properties.Resources.ic_clear_all_black_24dp;
+            this.lblClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblClear.Location = new System.Drawing.Point(209, -36);
+            this.lblClear.Name = "lblClear";
+            this.lblClear.Size = new System.Drawing.Size(24, 24);
+            this.lblClear.TabIndex = 1;
+            this.lblClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblClear.Click += new System.EventHandler(this.lblClear_Click);
             // 
             // panEstoque
             // 
@@ -263,6 +312,40 @@
             this.dgvEstoque.Size = new System.Drawing.Size(594, 277);
             this.dgvEstoque.TabIndex = 2;
             // 
+            // idEstoqueDataGridViewTextBoxColumn
+            // 
+            this.idEstoqueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idEstoqueDataGridViewTextBoxColumn.DataPropertyName = "IdEstoque";
+            this.idEstoqueDataGridViewTextBoxColumn.HeaderText = "IdEstoque";
+            this.idEstoqueDataGridViewTextBoxColumn.Name = "idEstoqueDataGridViewTextBoxColumn";
+            this.idEstoqueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idIngredienteDataGridViewTextBoxColumn
+            // 
+            this.idIngredienteDataGridViewTextBoxColumn.DataPropertyName = "IdIngrediente";
+            this.idIngredienteDataGridViewTextBoxColumn.HeaderText = "IdIngrediente";
+            this.idIngredienteDataGridViewTextBoxColumn.Name = "idIngredienteDataGridViewTextBoxColumn";
+            this.idIngredienteDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // ingredienteDataGridViewTextBoxColumn
+            // 
+            this.ingredienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ingredienteDataGridViewTextBoxColumn.DataPropertyName = "Ingrediente";
+            this.ingredienteDataGridViewTextBoxColumn.HeaderText = "Ingrediente";
+            this.ingredienteDataGridViewTextBoxColumn.Name = "ingredienteDataGridViewTextBoxColumn";
+            this.ingredienteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantidadeDataGridViewTextBoxColumn
+            // 
+            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
+            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
+            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
+            this.quantidadeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // estoqueModelBindingSource
+            // 
+            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
+            // 
             // ckbAcabando
             // 
             this.ckbAcabando.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -292,6 +375,39 @@
             this.panPedidos.Size = new System.Drawing.Size(300, 0);
             this.panPedidos.TabIndex = 17;
             this.panPedidos.Leave += new System.EventHandler(this.panPedidos_Leave);
+            // 
+            // lblPedidos
+            // 
+            this.lblPedidos.AutoSize = true;
+            this.lblPedidos.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPedidos.ForeColor = System.Drawing.Color.DimGray;
+            this.lblPedidos.Location = new System.Drawing.Point(32, 27);
+            this.lblPedidos.Name = "lblPedidos";
+            this.lblPedidos.Size = new System.Drawing.Size(80, 19);
+            this.lblPedidos.TabIndex = 19;
+            this.lblPedidos.Text = "Nº Pedido";
+            this.lblPedidos.Visible = false;
+            // 
+            // lblAddPedido
+            // 
+            this.lblAddPedido.AutoSize = true;
+            this.lblAddPedido.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddPedido.ForeColor = System.Drawing.Color.DimGray;
+            this.lblAddPedido.Location = new System.Drawing.Point(72, 51);
+            this.lblAddPedido.Name = "lblAddPedido";
+            this.lblAddPedido.Size = new System.Drawing.Size(197, 23);
+            this.lblAddPedido.TabIndex = 26;
+            this.lblAddPedido.Text = "Addicione um pedido!";
+            // 
+            // ptbPedidos
+            // 
+            this.ptbPedidos.Image = global::Pizzaria.Properties.Resources.happy;
+            this.ptbPedidos.Location = new System.Drawing.Point(30, 44);
+            this.ptbPedidos.Name = "ptbPedidos";
+            this.ptbPedidos.Size = new System.Drawing.Size(36, 36);
+            this.ptbPedidos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbPedidos.TabIndex = 25;
+            this.ptbPedidos.TabStop = false;
             // 
             // lblFinalizarPedido
             // 
@@ -380,18 +496,6 @@
             this.lblListaPizzas.TabIndex = 20;
             this.lblListaPizzas.Text = "Pizzas";
             this.lblListaPizzas.Visible = false;
-            // 
-            // lblPedidos
-            // 
-            this.lblPedidos.AutoSize = true;
-            this.lblPedidos.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPedidos.ForeColor = System.Drawing.Color.DimGray;
-            this.lblPedidos.Location = new System.Drawing.Point(32, 27);
-            this.lblPedidos.Name = "lblPedidos";
-            this.lblPedidos.Size = new System.Drawing.Size(80, 19);
-            this.lblPedidos.TabIndex = 19;
-            this.lblPedidos.Text = "Nº Pedido";
-            this.lblPedidos.Visible = false;
             // 
             // lblConcluirPedido
             // 
@@ -569,6 +673,31 @@
             this.lblAlert.Text = "Atenção estoque vazio!";
             this.lblAlert.Visible = false;
             // 
+            // ptbFechar
+            // 
+            this.ptbFechar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ptbFechar.Image = global::Pizzaria.Properties.Resources.ic_close_white_24dp;
+            this.ptbFechar.Location = new System.Drawing.Point(-36, 7);
+            this.ptbFechar.Name = "ptbFechar";
+            this.ptbFechar.Size = new System.Drawing.Size(24, 24);
+            this.ptbFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbFechar.TabIndex = 1;
+            this.ptbFechar.TabStop = false;
+            this.ptbFechar.Visible = false;
+            this.ptbFechar.Click += new System.EventHandler(this.ptbFechar_Click);
+            // 
+            // ptbAlert
+            // 
+            this.ptbAlert.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ptbAlert.Image = global::Pizzaria.Properties.Resources.ic_warning_white_24dp;
+            this.ptbAlert.Location = new System.Drawing.Point(-166, 5);
+            this.ptbAlert.Name = "ptbAlert";
+            this.ptbAlert.Size = new System.Drawing.Size(24, 24);
+            this.ptbAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbAlert.TabIndex = 0;
+            this.ptbAlert.TabStop = false;
+            this.ptbAlert.Visible = false;
+            // 
             // panSearch
             // 
             this.panSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -581,6 +710,20 @@
             this.panSearch.Name = "panSearch";
             this.panSearch.Size = new System.Drawing.Size(925, 0);
             this.panSearch.TabIndex = 2;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Image = global::Pizzaria.Properties.Resources.ic_arrow_forward_white_24dp;
+            this.btnSearch.Location = new System.Drawing.Point(664, 24);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.btnSearch.Size = new System.Drawing.Size(35, 30);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Visible = false;
             // 
             // txtSearch
             // 
@@ -644,175 +787,6 @@
             this.lblHora.Text = "16:33";
             this.lblHora.Visible = false;
             // 
-            // panActionBar
-            // 
-            this.panActionBar.BackColor = System.Drawing.Color.Gold;
-            this.panActionBar.Controls.Add(this.ptbCarrinho);
-            this.panActionBar.Controls.Add(this.ptbNotify);
-            this.panActionBar.Controls.Add(this.ptbSearch);
-            this.panActionBar.Controls.Add(this.ptbMenu);
-            this.panActionBar.Controls.Add(this.lblTitulo);
-            this.panActionBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panActionBar.Location = new System.Drawing.Point(0, 0);
-            this.panActionBar.Margin = new System.Windows.Forms.Padding(0);
-            this.panActionBar.Name = "panActionBar";
-            this.panActionBar.Size = new System.Drawing.Size(1000, 75);
-            this.panActionBar.TabIndex = 0;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Roboto Lt", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.DimGray;
-            this.lblTitulo.Location = new System.Drawing.Point(81, 25);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(95, 29);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Pedido";
-            // 
-            // tmMenuSide
-            // 
-            this.tmMenuSide.Interval = 1;
-            this.tmMenuSide.Tick += new System.EventHandler(this.tmMenuSide_Tick);
-            // 
-            // tmNotify
-            // 
-            this.tmNotify.Interval = 1;
-            this.tmNotify.Tick += new System.EventHandler(this.tmNotify_Tick);
-            // 
-            // tmSearch
-            // 
-            this.tmSearch.Interval = 1;
-            this.tmSearch.Tick += new System.EventHandler(this.tmSearch_Tick);
-            // 
-            // tmAlert
-            // 
-            this.tmAlert.Interval = 1;
-            this.tmAlert.Tick += new System.EventHandler(this.tmAlert_Tick);
-            // 
-            // tmEstoque
-            // 
-            this.tmEstoque.Interval = 1;
-            this.tmEstoque.Tick += new System.EventHandler(this.tmEstoque_Tick);
-            // 
-            // atualizaHora
-            // 
-            this.atualizaHora.Enabled = true;
-            this.atualizaHora.Tick += new System.EventHandler(this.atualizaHora_Tick);
-            // 
-            // tmPedidos
-            // 
-            this.tmPedidos.Interval = 1;
-            this.tmPedidos.Tick += new System.EventHandler(this.tmPedidos_Tick);
-            // 
-            // lblAddPedido
-            // 
-            this.lblAddPedido.AutoSize = true;
-            this.lblAddPedido.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddPedido.ForeColor = System.Drawing.Color.DimGray;
-            this.lblAddPedido.Location = new System.Drawing.Point(72, 51);
-            this.lblAddPedido.Name = "lblAddPedido";
-            this.lblAddPedido.Size = new System.Drawing.Size(197, 23);
-            this.lblAddPedido.TabIndex = 26;
-            this.lblAddPedido.Text = "Addicione um pedido!";
-            // 
-            // lblClear
-            // 
-            this.lblClear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblClear.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClear.ForeColor = System.Drawing.Color.DimGray;
-            this.lblClear.Image = global::Pizzaria.Properties.Resources.ic_clear_all_black_24dp;
-            this.lblClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblClear.Location = new System.Drawing.Point(113, -36);
-            this.lblClear.Name = "lblClear";
-            this.lblClear.Size = new System.Drawing.Size(24, 24);
-            this.lblClear.TabIndex = 1;
-            this.lblClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblClear.Click += new System.EventHandler(this.lblClear_Click);
-            // 
-            // idEstoqueDataGridViewTextBoxColumn
-            // 
-            this.idEstoqueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idEstoqueDataGridViewTextBoxColumn.DataPropertyName = "IdEstoque";
-            this.idEstoqueDataGridViewTextBoxColumn.HeaderText = "IdEstoque";
-            this.idEstoqueDataGridViewTextBoxColumn.Name = "idEstoqueDataGridViewTextBoxColumn";
-            this.idEstoqueDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idIngredienteDataGridViewTextBoxColumn
-            // 
-            this.idIngredienteDataGridViewTextBoxColumn.DataPropertyName = "IdIngrediente";
-            this.idIngredienteDataGridViewTextBoxColumn.HeaderText = "IdIngrediente";
-            this.idIngredienteDataGridViewTextBoxColumn.Name = "idIngredienteDataGridViewTextBoxColumn";
-            this.idIngredienteDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // ingredienteDataGridViewTextBoxColumn
-            // 
-            this.ingredienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ingredienteDataGridViewTextBoxColumn.DataPropertyName = "Ingrediente";
-            this.ingredienteDataGridViewTextBoxColumn.HeaderText = "Ingrediente";
-            this.ingredienteDataGridViewTextBoxColumn.Name = "ingredienteDataGridViewTextBoxColumn";
-            this.ingredienteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantidadeDataGridViewTextBoxColumn
-            // 
-            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
-            this.quantidadeDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // estoqueModelBindingSource
-            // 
-            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
-            // 
-            // ptbPedidos
-            // 
-            this.ptbPedidos.Image = global::Pizzaria.Properties.Resources.happy;
-            this.ptbPedidos.Location = new System.Drawing.Point(30, 44);
-            this.ptbPedidos.Name = "ptbPedidos";
-            this.ptbPedidos.Size = new System.Drawing.Size(36, 36);
-            this.ptbPedidos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ptbPedidos.TabIndex = 25;
-            this.ptbPedidos.TabStop = false;
-            // 
-            // ptbFechar
-            // 
-            this.ptbFechar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ptbFechar.Image = global::Pizzaria.Properties.Resources.ic_close_white_24dp;
-            this.ptbFechar.Location = new System.Drawing.Point(-36, 7);
-            this.ptbFechar.Name = "ptbFechar";
-            this.ptbFechar.Size = new System.Drawing.Size(24, 24);
-            this.ptbFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ptbFechar.TabIndex = 1;
-            this.ptbFechar.TabStop = false;
-            this.ptbFechar.Visible = false;
-            this.ptbFechar.Click += new System.EventHandler(this.ptbFechar_Click);
-            // 
-            // ptbAlert
-            // 
-            this.ptbAlert.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ptbAlert.Image = global::Pizzaria.Properties.Resources.ic_warning_white_24dp;
-            this.ptbAlert.Location = new System.Drawing.Point(-166, 5);
-            this.ptbAlert.Name = "ptbAlert";
-            this.ptbAlert.Size = new System.Drawing.Size(24, 24);
-            this.ptbAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ptbAlert.TabIndex = 0;
-            this.ptbAlert.TabStop = false;
-            this.ptbAlert.Visible = false;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Image = global::Pizzaria.Properties.Resources.ic_arrow_forward_white_24dp;
-            this.btnSearch.Location = new System.Drawing.Point(664, 24);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.btnSearch.Size = new System.Drawing.Size(35, 30);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Visible = false;
-            // 
             // lblPedido
             // 
             this.lblPedido.Dock = System.Windows.Forms.DockStyle.Top;
@@ -847,6 +821,21 @@
             this.lblStock.Click += new System.EventHandler(this.lblStock_Click);
             this.lblStock.MouseEnter += new System.EventHandler(this.lblStock_MouseEnter);
             this.lblStock.MouseLeave += new System.EventHandler(this.lblStock_MouseLeave);
+            // 
+            // panActionBar
+            // 
+            this.panActionBar.BackColor = System.Drawing.Color.Gold;
+            this.panActionBar.Controls.Add(this.ptbCarrinho);
+            this.panActionBar.Controls.Add(this.ptbNotify);
+            this.panActionBar.Controls.Add(this.ptbSearch);
+            this.panActionBar.Controls.Add(this.ptbMenu);
+            this.panActionBar.Controls.Add(this.lblTitulo);
+            this.panActionBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panActionBar.Location = new System.Drawing.Point(0, 0);
+            this.panActionBar.Margin = new System.Windows.Forms.Padding(0);
+            this.panActionBar.Name = "panActionBar";
+            this.panActionBar.Size = new System.Drawing.Size(1000, 75);
+            this.panActionBar.TabIndex = 0;
             // 
             // ptbCarrinho
             // 
@@ -897,40 +886,51 @@
             this.ptbMenu.TabStop = false;
             this.ptbMenu.Click += new System.EventHandler(this.ptbMenu_Click);
             // 
-            // ptbMini
+            // lblTitulo
             // 
-            this.ptbMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ptbMini.Image = global::Pizzaria.Properties.Resources.window_minimize;
-            this.ptbMini.Location = new System.Drawing.Point(906, 1);
-            this.ptbMini.Name = "ptbMini";
-            this.ptbMini.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.ptbMini.Size = new System.Drawing.Size(24, 24);
-            this.ptbMini.TabIndex = 3;
-            this.ptbMini.TabStop = false;
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Roboto Lt", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTitulo.Location = new System.Drawing.Point(81, 25);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(95, 29);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Pedido";
             // 
-            // ptbMaxiRest
+            // tmMenuSide
             // 
-            this.ptbMaxiRest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ptbMaxiRest.Image = global::Pizzaria.Properties.Resources.window_maximize;
-            this.ptbMaxiRest.Location = new System.Drawing.Point(936, 0);
-            this.ptbMaxiRest.Name = "ptbMaxiRest";
-            this.ptbMaxiRest.Size = new System.Drawing.Size(24, 24);
-            this.ptbMaxiRest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ptbMaxiRest.TabIndex = 2;
-            this.ptbMaxiRest.TabStop = false;
-            this.ptbMaxiRest.Click += new System.EventHandler(this.ptbMaxiRest_Click);
+            this.tmMenuSide.Interval = 1;
+            this.tmMenuSide.Tick += new System.EventHandler(this.tmMenuSide_Tick);
             // 
-            // ptbExit
+            // tmNotify
             // 
-            this.ptbExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ptbExit.Image = global::Pizzaria.Properties.Resources.window_close;
-            this.ptbExit.Location = new System.Drawing.Point(966, 0);
-            this.ptbExit.Name = "ptbExit";
-            this.ptbExit.Size = new System.Drawing.Size(24, 24);
-            this.ptbExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ptbExit.TabIndex = 1;
-            this.ptbExit.TabStop = false;
-            this.ptbExit.Click += new System.EventHandler(this.ptbExit_Click);
+            this.tmNotify.Interval = 1;
+            this.tmNotify.Tick += new System.EventHandler(this.tmNotify_Tick);
+            // 
+            // tmSearch
+            // 
+            this.tmSearch.Interval = 1;
+            this.tmSearch.Tick += new System.EventHandler(this.tmSearch_Tick);
+            // 
+            // tmAlert
+            // 
+            this.tmAlert.Interval = 1;
+            this.tmAlert.Tick += new System.EventHandler(this.tmAlert_Tick);
+            // 
+            // tmEstoque
+            // 
+            this.tmEstoque.Interval = 1;
+            this.tmEstoque.Tick += new System.EventHandler(this.tmEstoque_Tick);
+            // 
+            // atualizaHora
+            // 
+            this.atualizaHora.Enabled = true;
+            this.atualizaHora.Tick += new System.EventHandler(this.atualizaHora_Tick);
+            // 
+            // tmPedidos
+            // 
+            this.tmPedidos.Interval = 1;
+            this.tmPedidos.Tick += new System.EventHandler(this.tmPedidos_Tick);
             // 
             // frmPrincipal
             // 
@@ -947,6 +947,9 @@
             this.SizeChanged += new System.EventHandler(this.frmPrincipal_SizeChanged);
             this.panTitleBar.ResumeLayout(false);
             this.panTitleBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).EndInit();
             this.panPrincipal.ResumeLayout(false);
             this.panPedido.ResumeLayout(false);
             this.panPedido.PerformLayout();
@@ -955,28 +958,25 @@
             this.panEstoque.ResumeLayout(false);
             this.panEstoque.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
             this.panPedidos.ResumeLayout(false);
             this.panPedidos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPedidos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).EndInit();
             this.panAlert.ResumeLayout(false);
             this.panAlert.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbFechar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAlert)).EndInit();
             this.panSearch.ResumeLayout(false);
             this.panSearch.PerformLayout();
             this.panSideBar.ResumeLayout(false);
             this.panSideBar.PerformLayout();
             this.panActionBar.ResumeLayout(false);
             this.panActionBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPedidos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbFechar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbAlert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbCarrinho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).EndInit();
             this.ResumeLayout(false);
 
         }
