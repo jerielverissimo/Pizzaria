@@ -21,6 +21,11 @@ namespace Pizzaria.Controle
             return EstoqueDB.FirstOrDefault(x => x.IdIngrediente == id);
         }
 
+        public static List<EstoqueModel> ListarPorFiltro(string Nome)
+        {
+            return EstoqueDB.Where(x => x.Ingrediente.Nome.StartsWith(Nome)).ToList();
+        }
+
         public static void DeduzirQuantidade(int idIngrediente, int quantidadePizza, decimal quantidadeUnidade)
         {
             var estoque = EstoqueBLL.GetEstoqueByIngredienteId(idIngrediente);

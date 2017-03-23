@@ -16,6 +16,19 @@ namespace Pizzaria.Controle
             return PedidoDB.FirstOrDefault(x => x.IdPedido == id);
         }
 
+        public static string GetUltimoNumero()
+        {
+            if (PedidoDB == null)
+                PedidoDB = new List<PedidoModel>();
+
+            return string.Concat("PED - ", PedidoDB.Count.ToString("000000"));
+        }
+
+        public static PedidoModel GetPedidoPorNumero(string NumeroPedido)
+        {
+            return PedidoDB.FirstOrDefault(x => x.NumeroPedido == NumeroPedido);
+        }
+
         public static void CriarPedido(PedidoModel Pedido)
         {
             if (Pedido == null)
@@ -28,9 +41,9 @@ namespace Pizzaria.Controle
                 throw new Exception("Pedido deve possuir Pizzas.");
             }
 
-            foreach (var pizza in Pedido.Pizzas)
+            foreach (var pizzaPed in Pedido.Pizzas)
             {
-                foreach (var ingrediente in pizza.Receita.Ingredientes)
+                foreach (var ingrediente in pizzaPed.Pizza.Receita.Ingredientes)
                 {
                     EstoqueBLL.DeduzirQuantidade(ingrediente.IdIngrediente, 2, 100);
                 }

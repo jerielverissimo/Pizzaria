@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controle\EstoqueBLL.cs" />
-    <Compile Include="Controle\PedidoReceitaBLL.cs" />
+    <Compile Include="Controle\PedidoBLL.cs" />
     <Compile Include="Controle\ReceitaIngredienteBLL.cs" />
     <Compile Include="Controle\IngredienteBLL.cs" />
     <Compile Include="Controle\ReceitaBLL.cs" />
@@ -80,6 +80,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\Pizzaria.Model.EstoqueModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -117,16 +118,22 @@
     <Content Include="img\icons\ic_local_pizza_white_48dp.png" />
     <Content Include="img\icons\ic_menu_black_24dp.png" />
     <Content Include="img\icons\ic_menu_white_24dp.png" />
+    <None Include="img\icons\ic_notifications_24px.png" />
+    <None Include="img\icons\ic_notifications_24_px.png" />
     <Content Include="img\icons\ic_notifications_none_white_24dp.png" />
     <Content Include="img\icons\ic_notifications_white_24dp.png" />
+    <None Include="img\icons\ic_search_24px.png" />
     <Content Include="img\icons\ic_search_black_24dp.png" />
     <Content Include="img\icons\ic_search_white_24dp.png" />
+    <None Include="img\icons\ic_shopping_cart_24px.png" />
     <Content Include="img\icons\ic_warning_black_36dp.png" />
     <Content Include="img\icons\ic_warning_white_24dp.png" />
     <Content Include="img\icons\ic_warning_white_36dp.png" />
+    <None Include="img\icons\not.png" />
     <Content Include="img\icons\path2.png" />
     <None Include="img\icons\path4.png" />
     <None Include="img\icons\path5.png" />
+    <None Include="img\icons\search.png" />
     <Content Include="img\icons\stocking%281%29.png" />
     <Content Include="img\icons\stocking.png" />
     <Content Include="img\icons\window-close.png" />

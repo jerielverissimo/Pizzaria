@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Pizzaria.Controle;
+using Pizzaria.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,29 +22,29 @@ namespace Pizzaria
         // var do alert
         float largura = 0, locLargura = 0, origem = 0, tamanho = 0;
         const float porc = 0.2f;
-        
-        bool menuExtended = false, notify = false, search = false, ativarAlert = false; // vars de controle
-    
-        // var para slide do estoque
-        int pos = 0;
-        bool flag = false, prim = false;
 
-        
+        bool menuExtended = false, notify = false, pedidos = false, search = false, ativarAlert = false; // vars de controle
+
+        // var para slide do estoque
+        int posEstoque = 0;
+        bool flagEstoque = false;
+
+
 
         // Construtor do form
         public frmPrincipal()
         {
             InitializeComponent();
-            
+
         }
 
         // load do form 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
 
-           
 
-            
+
+
             // mover formulário
             this.MouseDown += new MouseEventHandler(panTitleBar_MouseDown);
             this.MouseMove += new MouseEventHandler(panTitleBar_MouseMove);
@@ -51,7 +53,7 @@ namespace Pizzaria
 
             // setar vars do  efeito do alerta
 
-            panAlert.Top =  panPedido.ClientSize.Height - panAlert.Height;
+            panAlert.Top = panPedido.ClientSize.Height - panAlert.Height;
             panAlert.Left = (panPedido.ClientSize.Width - panAlert.Width) / 2;
 
 
@@ -59,8 +61,10 @@ namespace Pizzaria
             largura = panPedido.ClientSize.Width * porc;
             locLargura = (panPedido.ClientSize.Width / 2) * porc;
 
-            // set efeito estoque
+            // set slide pan estoque
             panEstoque.Location = new Point(this.ClientSize.Width, 0);
+            panEstoque.Size = new Size(this.Size.Width, this.Size.Height);
+
 
 
 
@@ -72,20 +76,34 @@ namespace Pizzaria
             lblStock.BackColor = ColorTranslator.FromHtml("#fff176");
             panSearch.BackColor = ColorTranslator.FromHtml("#795548");
             txtSearch.BackColor = ColorTranslator.FromHtml("#8d6e63");
-            //panel1.BackColor = ColorTranslator.FromHtml("#f44336");
             txtSearch.ForeColor = ColorTranslator.FromHtml("#795548");
             btnSearch.BackColor = ColorTranslator.FromHtml("#A1887F");
-           
+            lblCliente.ForeColor = ColorTranslator.FromHtml("#212121");
+            panPedido.BackColor = ColorTranslator.FromHtml("#F5F5F5");
+            panNotify.BackColor = ColorTranslator.FromHtml("#FF7043");
+            lstNotify.BackColor = ColorTranslator.FromHtml("#FF7043");
+
+
+            cmbPizza.DataSource = PizzaBLL.PizzaDB;
+            cmbPizza.DisplayMember = "Nome";
+            cmbPizza.ValueMember = "IdPizza";
+
+            cmbPedidos.DataSource = PedidoBLL.PedidoDB;
+            cmbPedidos.DisplayMember = "NumeroPedido";
+            cmbPedidos.ValueMember = "IdPedido";
+
+            dgvEstoque.DataSource = EstoqueBLL.EstoqueDB;
+
         }
 
-       
+
 
         // quando o tamanho do form muda,
         // ex quando maximiza ou minimiza a tela atualiza os componentes da tela
-        
+
         private void frmPrincipal_SizeChanged(object sender, EventArgs e)
         {
-            ptbAddPedido.Left = (panPedido.Size.Width - ptbAddPedido.Size.Width) / 2;
+
 
             // seta as var do alert
 
@@ -93,7 +111,8 @@ namespace Pizzaria
             locLargura = 0;
             origem = 0;
             tamanho = 0;
-            panAlert.Top = panPedido.ClientSize.Height - panAlert.Height;
+
+            //panAlert.Top = panPedido.ClientSize.Height - panAlert.Height;
             panAlert.Left = (panPedido.ClientSize.Width - panAlert.Width) / 2;
             origem = panPedido.ClientSize.Width / 2;
             largura = panPedido.ClientSize.Width * porc;
@@ -104,12 +123,12 @@ namespace Pizzaria
                 panAlert.Width = panPedido.ClientSize.Width;
             }
 
-            // slide estoque
+            // joga o estoque para fora da tela
 
-            
-            if (flag == true) panEstoque.Location = new Point(this.ClientSize.Width, 0);
-            if (prim == false) panEstoque.Location = new Point(this.ClientSize.Width, 0);
-            panEstoque.Size = new Size(this.Size.Width, this.Size.Height);
+            panEstoque.Left = this.Width;
+
+
+
 
 
         }
@@ -150,7 +169,7 @@ namespace Pizzaria
                         txtSearch.Visible = false;
                         btnSearch.Visible = false;
                         panNotify.Location = new Point(panNotify.Location.X, panSearch.Height);
-                        //panPedido.Top = panSearch.Height;
+                        panPedidos.Location = new Point(panPedidos.Location.X, panSearch.Height);
                     }
                     break;
                 case false:
@@ -165,7 +184,7 @@ namespace Pizzaria
                         txtSearch.Visible = true;
                         btnSearch.Visible = true;
                         panNotify.Location = new Point(panNotify.Location.X, panSearch.Height);
-                        //panPedido.Top = panSearch.Height;
+                        panPedidos.Location = new Point(panPedidos.Location.X, panSearch.Height);
                     }
                     break;
             }
@@ -192,10 +211,10 @@ namespace Pizzaria
                         lblPedido.Text = "";
                         lblData.Visible = false;
                         lblHora.Visible = false;
-                        lblLogo.Visible = false;
+
 
                         panSideBar.Width -= 25;
-                        
+
                     }
                     break;
 
@@ -208,7 +227,7 @@ namespace Pizzaria
                         lblPedido.Text = "Pedido";
                         lblData.Visible = true;
                         lblHora.Visible = true;
-                        lblLogo.Visible = true;
+
 
                         menuExtended = true;
                         tmMenuSide.Enabled = false;
@@ -216,7 +235,7 @@ namespace Pizzaria
                     else
                     {
                         panSideBar.Width += 25;
-                        
+
                     }
                     break;
             }
@@ -235,9 +254,10 @@ namespace Pizzaria
                 case false:
                     tamanho += largura;
                     origem -= locLargura;
-   
+
                     if (panAlert.Width == panPedido.ClientSize.Width && panAlert.Left == 0)
                     {
+                        panAlert.Dock = DockStyle.Bottom;
                         tmAlert.Enabled = false;
                         ativarAlert = true;
                         ptbAlert.Visible = true;
@@ -247,6 +267,7 @@ namespace Pizzaria
                     }
                     break;
                 case true:
+                    panAlert.Dock = DockStyle.None;
                     tamanho -= largura;
                     origem += locLargura;
                     ptbAlert.Visible = false;
@@ -282,6 +303,9 @@ namespace Pizzaria
                     }
                     break;
                 case false:
+
+                    if (pedidos) tmPedidos.Enabled = true;
+
                     if (panNotify.Height == 225)
                     {
                         notify = true;
@@ -294,6 +318,41 @@ namespace Pizzaria
                     break;
             }
 
+        }
+
+        // efeito do estoque
+
+        private void tmEstoque_Tick(object sender, EventArgs e)
+        {
+            switch (flagEstoque)
+            {
+                case false:
+                    if (panEstoque.Location.X <= 0)
+                    {
+                        panEstoque.Dock = DockStyle.Fill;
+                        tmEstoque.Enabled = false;
+                    }
+                    else
+                    {
+                        posEstoque -= 100;
+                        panEstoque.Location = new Point(posEstoque, 0);
+                    }
+                    break;
+                case true:
+                    panEstoque.Dock = DockStyle.None;
+                    if (panEstoque.Location.X >= this.ClientSize.Width)
+                    {
+                        tmEstoque.Enabled = false;
+
+
+                    }
+                    else
+                    {
+                        posEstoque += 100;
+                        panEstoque.Location = new Point(posEstoque, 0);
+                    }
+                    break;
+            }
         }
 
 
@@ -346,16 +405,6 @@ namespace Pizzaria
             tmMenuSide.Enabled = true;
         }
 
-        private void ptbAddPedido_MouseEnter(object sender, EventArgs e)
-        {
-            ptbAddPedido.Image = Pizzaria.Properties.Resources.add_circle_red_hover;
-        }
-
-        private void ptbAddPedido_MouseLeave(object sender, EventArgs e)
-        {
-            ptbAddPedido.Image = Pizzaria.Properties.Resources.add_circle_red;
-        }
-
         private void lblPedido_MouseEnter(object sender, EventArgs e)
         {
             lblPedido.BackColor = ColorTranslator.FromHtml("#fff59d");
@@ -371,34 +420,7 @@ namespace Pizzaria
             txtSearch.BackColor = ColorTranslator.FromHtml("#BCAAA4");
         }
 
-        private void tmEstoque_Tick(object sender, EventArgs e)
-        {
-            switch (flag)
-            {
-                case false:
-                    if (panEstoque.Location.X <= 0)
-                    {
-                        tmEstoque.Enabled = false;
-                    }
-                    else
-                    {
-                        pos -= 100;
-                        panEstoque.Location = new Point(pos, 0);
-                    }
-                    break;
-                case true:
-                    if (panEstoque.Location.X >= this.ClientSize.Width)
-                    {
-                        tmEstoque.Enabled = false;
-                    }
-                    else
-                    {
-                        pos += 100;
-                        panEstoque.Location = new Point(pos, 0);
-                    }
-                    break;
-            }
-        }
+
 
         private void atualizaHora_Tick(object sender, EventArgs e)
         {
@@ -409,41 +431,137 @@ namespace Pizzaria
             lblData.Text = data;
         }
 
+        private void lblClear_Click(object sender, EventArgs e)
+        {
+            lstNotify.Items.Clear();
+        }
+
         private void ptbFechar_Click(object sender, EventArgs e)
         {
             tmAlert.Enabled = true;
         }
 
-     
+        private void lstPedidos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblExcluirPedido.Enabled = true;
+            lblExcluirPedido.Visible = true;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblExcluirPedido.Enabled = false;
+            lblExcluirPedido.Visible = false;
+        }
+
+        private void ptbCarrinho_Click(object sender, EventArgs e)
+        {
+            tmPedidos.Enabled = true;
+        }
+
+        private void lblLimparDados_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstEstoque_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblAddPizza_Click(object sender, EventArgs e)
+        {
+            PedidoModel pedido;
+            if (string.IsNullOrEmpty(txtCliente.Text))
+            {
+                //Faz novo pedido
+                pedido = new PedidoModel();
+                pedido.NumeroPedido = PedidoBLL.GetUltimoNumero();
+                pedido.IdPedido = PedidoBLL.PedidoDB.Count + 1;
+                //Adicionar campo de observação
+            }
+            else
+            {
+                //Obtem Pedido
+                pedido = PedidoBLL.GetPedidoPorNumero(txtCliente.Text);
+
+                if (pedido == null)
+                {
+                    MessageBox.Show("Pedido Inválido!");
+                    return;
+                }
+                PedidoBLL.PedidoDB.RemoveAt(PedidoBLL.PedidoDB.FindIndex(x => x.NumeroPedido == txtCliente.Text));
+            }
+
+            if (pedido.Pizzas == null)
+                pedido.Pizzas = new List<PedidoPizzaModel>();
+
+            pedido.Pizzas.Add(new PedidoPizzaModel() { IdPedido = PedidoBLL.PedidoDB.Count + 1, ComBorda = ckbBorda.Checked, IdPizza = (int)cmbPizza.SelectedValue, Pizza = PizzaBLL.GetPizzaById((int)cmbPizza.SelectedValue), Pedido = pedido, Quantidade = (int)numQtd.Value });
+            PedidoBLL.PedidoDB.Add(pedido);
+            txtCliente.Text = pedido.NumeroPedido;
+            cmbPedidos.Refresh();
+        }
+
+        private void tmPedidos_Tick(object sender, EventArgs e)
+        {
+            switch (pedidos)
+            {
+                case true:
+                    if (panPedidos.Height == 0)
+                    {
+                        pedidos = false;
+                        tmPedidos.Enabled = false;
+                    }
+                    else
+                    {
+                        panPedidos.Height -= 25;
+                    }
+                    break;
+                case false:
+
+                    if (notify) tmNotify.Enabled = true;
+
+                    if (panPedidos.Height == 275)
+                    {
+                        pedidos = true;
+                        tmPedidos.Enabled = false;
+                    }
+                    else
+                    {
+                        panPedidos.Height += 25;
+                    }
+                    break;
+            }
+        }
 
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             txtSearch.BackColor = ColorTranslator.FromHtml("#A1887F");
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-          
-        }
 
         private void lblPedido_Click(object sender, EventArgs e)
         {
+            if (search) tmSearch.Enabled = true;
             ptbSearch.Enabled = false;
             ptbSearch.Visible = false;
             tmEstoque.Enabled = true;
-            flag = true;
-            prim = false;
+            ptbCarrinho.Enabled = true;
+            ptbCarrinho.Visible = true;
+            flagEstoque = true;
+            lblTitulo.Text = "Pedido";
         }
 
         private void lblStock_Click(object sender, EventArgs e)
         {
             ptbSearch.Enabled = true;
             ptbSearch.Visible = true;
-            pos = panEstoque.Width;
+            ptbCarrinho.Enabled = false;
+            ptbCarrinho.Visible = false;
+            posEstoque = panEstoque.Width;
             tmEstoque.Enabled = true;
-            flag = false;
-            prim = true;
+            flagEstoque = false;
+            lblTitulo.Text = "Estoque";
         }
 
         private void ptbSearch_Click(object sender, EventArgs e)
@@ -454,7 +572,7 @@ namespace Pizzaria
         private void ptbAddPedido_Click(object sender, EventArgs e)
         {
             tmAlert.Enabled = true;
-           
+
         }
 
 

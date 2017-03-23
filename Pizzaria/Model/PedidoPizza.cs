@@ -10,7 +10,11 @@ namespace Pizzaria.Model
     {
         public int IdPedido { get; set; }
 
+        public int IdPizza { get; set; }
+
         public int Quantidade { get; set; }
+
+        public bool ComBorda { get; set; }
 
         public PizzaModel Pizza { get; set; }
 

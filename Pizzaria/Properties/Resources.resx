@@ -124,14 +124,17 @@
   <data name="window-minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\window-minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_menu_white_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons\ic_menu_white_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_notifications_24px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_notifications_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_menu_black_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_menu_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="window-minimize_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\window-minimize_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_notifications_24_px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_notifications_24_px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="path4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\path4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,6 +151,12 @@
   <data name="stocking(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\stocking(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ic_add_circle_black_48dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_add_circle_black_48dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_notifications_24px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_notifications_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ic_local_atm_white_48dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_local_atm_white_48dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,6 +172,9 @@
   <data name="ic_local_pizza_white_48dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_local_pizza_white_48dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ic_shopping_cart_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_shopping_cart_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ic_fullscreen_exit_black_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_fullscreen_exit_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,17 +184,26 @@
   <data name="ic_clear_all_black_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_clear_all_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="path2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\path2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ic_warning_white_36dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_warning_white_36dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_search_white_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_search_white_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="not" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\not.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="add_circle_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\add_circle_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_notifications_white_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons\ic_notifications_white_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="path5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\path5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_notifications_24_px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_notifications_24_px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="window-close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\window-close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,23 +211,38 @@
   <data name="ic_fullscreen_black_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_fullscreen_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ic_notifications_24px3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_notifications_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ic_fullscreen_exit_white_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_fullscreen_exit_white_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_add_circle_black_48dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons\ic_add_circle_black_48dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_notifications_24_px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_notifications_24_px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add_circle_red_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\add_circle_red_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ic_menu_white_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_menu_white_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="window-maximize_balck" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\window-maximize_balck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_notifications_white_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_notifications_white_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_search_black_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_search_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_close_black_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_close_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="path2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons\path2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_notifications_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_notifications_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_arrow_forward_white_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_arrow_forward_white_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,7 +256,7 @@
   <data name="ic_account_circle_white_48dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\icons\ic_account_circle_white_48dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="path5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\icons\path5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_search_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\icons\ic_search_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

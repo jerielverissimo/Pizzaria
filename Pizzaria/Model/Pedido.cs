@@ -10,8 +10,10 @@ namespace Pizzaria.Model
     {
         public int IdPedido { get; set; }
 
+        public string NumeroPedido { get; set; }
+
         public string Observacao { get; set; }
 
-        public List<PizzaModel> Pizzas { get; set; }
+        public List<PedidoPizzaModel> Pizzas { get; set; }
     }
 }

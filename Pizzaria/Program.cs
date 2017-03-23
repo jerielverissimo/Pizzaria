@@ -16,7 +16,7 @@ namespace Pizzaria
         [STAThread]
         static void Main()
         {
-            int idIngrediente = 1, idReceita = 1, idReceitaIngrediente = 1, idPizza = 1, idEstoque = 1;
+            int idIngrediente = 1, idReceita = 0, idReceitaIngrediente = 1, idPizza = 1, idEstoque = 1;
 
             IngredienteBLL.IngredienteDB = new List<IngredienteModel>();
             IngredienteBLL.IngredienteDB.Add(new IngredienteModel() { IdIngrediente = idIngrediente++, Nome = "Farinha", UnidadeMedida = "KG" });
@@ -32,7 +32,7 @@ namespace Pizzaria
             IngredienteBLL.IngredienteDB.Add(new IngredienteModel() { IdIngrediente = idIngrediente++, Nome = "Azeitona", UnidadeMedida = "UN" });
 
             ReceitaBLL.ReceitaDB = new List<ReceitaModel>();
-            ReceitaBLL.ReceitaDB.Add(new ReceitaModel() { IdReceita = idReceita++, Nome = "Pizzaria C# Mussarela", Ingredientes = new List<ReceitaIngredienteModel>() });
+            ReceitaBLL.ReceitaDB.Add(new ReceitaModel() { IdReceita = ++idReceita, Nome = "Pizzaria C# Mussarela", Ingredientes = new List<ReceitaIngredienteModel>() });
 
             ReceitaIngredienteBLL.ReceitaIngredienteDB = new List<ReceitaIngredienteModel>();
             ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, IdIngrediente = 1, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(1) });
@@ -41,13 +41,17 @@ namespace Pizzaria
             ReceitaIngredienteBLL.ReceitaIngredienteDB.Add(new ReceitaIngredienteModel() { IdReceitaIngrediente = idReceitaIngrediente++, IdReceita = idReceita, IdIngrediente = 4, Receita = ReceitaBLL.GetPorId(idReceita), Ingrediente = IngredienteBLL.GetIngredienteById(4) });
             try { ReceitaBLL.GetPorId(idReceita).Ingredientes = ReceitaIngredienteBLL.GetByReceitaId(idReceita); } catch { }
             PizzaBLL.PizzaDB = new List<PizzaModel>();
-            PizzaBLL.PizzaDB.Add(new PizzaModel() { IdPizza = idPizza++, Nome = "Pizzaria C# Mussarela", Sabor = "Mussarela", IdReceita = idReceita, Receita = ReceitaBLL.GetPorId(idReceita) });
+            PizzaBLL.PizzaDB.Add(new PizzaModel() { IdPizza = idPizza++, Nome = "Pizzaria C# Mussarela 1", Sabor = "Mussarela", IdReceita = idReceita, Receita = ReceitaBLL.GetPorId(idReceita) });
+            PizzaBLL.PizzaDB.Add(new PizzaModel() { IdPizza = idPizza++, Nome = "Pizzaria C# Mussarela 2", Sabor = "Mussarela", IdReceita = idReceita, Receita = ReceitaBLL.GetPorId(idReceita) });
+            PizzaBLL.PizzaDB.Add(new PizzaModel() { IdPizza = idPizza++, Nome = "Pizzaria C# Mussarela 3", Sabor = "Mussarela", IdReceita = idReceita, Receita = ReceitaBLL.GetPorId(idReceita) });
 
             EstoqueBLL.EstoqueDB = new List<EstoqueModel>();
-            for (int i = 0; i < idIngrediente; i++)
+            for (int i = 1; i < idIngrediente; i++)
             {
                 EstoqueBLL.EstoqueDB.Add(new EstoqueModel() {IdEstoque= idEstoque++ , IdIngrediente = i, Ingrediente = IngredienteBLL.GetIngredienteById(i), Quantidade = 100000});
             }
+
+            PedidoBLL.PedidoDB = new List<PedidoModel>();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
