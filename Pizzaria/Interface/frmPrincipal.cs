@@ -30,10 +30,7 @@ namespace Pizzaria
         int posEstoque = 0;
         bool flagEstoque = false;
 
-        // objs
-        Interface.Notificacao aviso = new Interface.Notificacao();
-
-
+        
         // Construtor do form
         public frmPrincipal()
         {
@@ -126,11 +123,15 @@ namespace Pizzaria
             origem = 0;
             tamanho = 0;
 
+            // seta as var para o efeito da notificação
+            
+
             //panAlert.Top = panPedido.ClientSize.Height - panAlert.Height;
             panAlert.Left = (panPedido.ClientSize.Width - panAlert.Width) / 2;
             origem = panPedido.ClientSize.Width / 2;
             largura = panPedido.ClientSize.Width * porc;
             locLargura = (panPedido.ClientSize.Width / 2) * porc;
+
             if (ativarAlert == true)
             {
                 panAlert.Left = 0;
@@ -163,6 +164,7 @@ namespace Pizzaria
                 this.WindowState = FormWindowState.Normal;
             }
         }
+
 
         // efeitos
 
@@ -369,11 +371,25 @@ namespace Pizzaria
             }
         }
 
+        // Timer para atualizar a label da hora
+
+        private void atualizaHora_Tick(object sender, EventArgs e)
+        {
+            // Pegar hora e data
+            string hora = DateTime.Now.ToShortTimeString();
+            string data = DateTime.Now.ToShortDateString();
+            lblHora.Text = hora;
+            lblData.Text = data;
+        }
+
+
+
 
         ///     
         /// Eventos de mouse
         /// 
 
+        // eventos para permitir a movimentação do form e resize com duplo click     
         private void panTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
@@ -393,16 +409,34 @@ namespace Pizzaria
             this.Top = Y + MousePosition.Y;
         }
 
-        private void ptbClose_Click(object sender, EventArgs e)
+
+
+
+        // Eventos de Click do mouse
+
+        // eveto de click para fechar o programa
+
+        private void ptbExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // eveto de click para maximizar e minimizar o form
         private void ptbMaxiRest_Click(object sender, EventArgs e)
         {
             maximize_restore_window();
         }
 
+        private void ptbMenu_Click(object sender, EventArgs e)
+        {
+            //ptbMenu.Image = Pizzaria.Properties.Resources.ic_arrow_back_white_24dp;
+            tmMenuSide.Enabled = true;
+        }
+
+
+
+
+        // Eventos de "Hover" (muda a cor do componente quando passa o mouse em cima)
         private void lblStock_MouseEnter(object sender, EventArgs e)
         {
             lblStock.BackColor = ColorTranslator.FromHtml("#fff59d");
@@ -413,11 +447,7 @@ namespace Pizzaria
             lblStock.BackColor = ColorTranslator.FromHtml("#fff176");
         }
 
-        private void ptbMenu_Click(object sender, EventArgs e)
-        {
-            //ptbMenu.Image = Pizzaria.Properties.Resources.ic_arrow_back_white_24dp;
-            tmMenuSide.Enabled = true;
-        }
+       
 
         private void lblPedido_MouseEnter(object sender, EventArgs e)
         {
@@ -436,14 +466,7 @@ namespace Pizzaria
 
 
 
-        private void atualizaHora_Tick(object sender, EventArgs e)
-        {
-            // Pegar hora e data
-            string hora = DateTime.Now.ToShortTimeString();
-            string data = DateTime.Now.ToShortDateString();
-            lblHora.Text = hora;
-            lblData.Text = data;
-        }
+       
 
         private void lblClear_Click(object sender, EventArgs e)
         {
