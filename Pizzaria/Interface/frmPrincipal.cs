@@ -271,7 +271,7 @@ namespace Pizzaria
 
                     if (panAlert.Width == panPedido.ClientSize.Width && panAlert.Left == 0)
                     {
-                        panAlert.Dock = DockStyle.Bottom;
+                      //  panAlert.Dock = DockStyle.Bottom;
                         tmAlert.Enabled = false;
                         ativarAlert = true;
                         ptbAlert.Visible = true;
@@ -281,7 +281,7 @@ namespace Pizzaria
                     }
                     break;
                 case true:
-                    panAlert.Dock = DockStyle.None;
+                   // panAlert.Dock = DockStyle.None;
                     tamanho -= largura;
                     origem += locLargura;
                     ptbAlert.Visible = false;
