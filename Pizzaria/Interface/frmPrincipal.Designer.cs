@@ -32,7 +32,7 @@
             this.panTitleBar = new System.Windows.Forms.Panel();
             this.ptbMini = new System.Windows.Forms.PictureBox();
             this.ptbMaxiRest = new System.Windows.Forms.PictureBox();
-            this.ptbSair = new System.Windows.Forms.PictureBox();
+            this.ptbExit = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panPrincipal = new System.Windows.Forms.Panel();
             this.panPedido = new System.Windows.Forms.Panel();
@@ -42,11 +42,6 @@
             this.lblClear = new System.Windows.Forms.Label();
             this.panEstoque = new System.Windows.Forms.Panel();
             this.dgvEstoque = new System.Windows.Forms.DataGridView();
-            this.idEstoqueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idIngredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ingredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ckbAcabando = new System.Windows.Forms.CheckBox();
             this.panPedidos = new System.Windows.Forms.Panel();
             this.lblFinalizarPedido = new System.Windows.Forms.Label();
@@ -90,16 +85,20 @@
             this.tmEstoque = new System.Windows.Forms.Timer(this.components);
             this.atualizaHora = new System.Windows.Forms.Timer(this.components);
             this.tmPedidos = new System.Windows.Forms.Timer(this.components);
+            this.idEstoqueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idIngredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbSair)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).BeginInit();
             this.panPrincipal.SuspendLayout();
             this.panPedido.SuspendLayout();
             this.panNotify.SuspendLayout();
             this.panEstoque.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
             this.panPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).BeginInit();
             this.panAlert.SuspendLayout();
@@ -112,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panTitleBar
@@ -119,7 +119,7 @@
             this.panTitleBar.BackColor = System.Drawing.Color.SandyBrown;
             this.panTitleBar.Controls.Add(this.ptbMini);
             this.panTitleBar.Controls.Add(this.ptbMaxiRest);
-            this.panTitleBar.Controls.Add(this.ptbSair);
+            this.panTitleBar.Controls.Add(this.ptbExit);
             this.panTitleBar.Controls.Add(this.lblTitle);
             this.panTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panTitleBar.Location = new System.Drawing.Point(0, 0);
@@ -154,17 +154,17 @@
             this.ptbMaxiRest.TabStop = false;
             this.ptbMaxiRest.Click += new System.EventHandler(this.ptbMaxiRest_Click);
             // 
-            // ptbSair
+            // ptbExit
             // 
-            this.ptbSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ptbSair.Image = global::Pizzaria.Properties.Resources.window_close;
-            this.ptbSair.Location = new System.Drawing.Point(966, 0);
-            this.ptbSair.Name = "ptbSair";
-            this.ptbSair.Size = new System.Drawing.Size(24, 24);
-            this.ptbSair.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ptbSair.TabIndex = 1;
-            this.ptbSair.TabStop = false;
-            this.ptbSair.Click += new System.EventHandler(this.ptbClose_Click);
+            this.ptbExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptbExit.Image = global::Pizzaria.Properties.Resources.window_close;
+            this.ptbExit.Location = new System.Drawing.Point(966, 0);
+            this.ptbExit.Name = "ptbExit";
+            this.ptbExit.Size = new System.Drawing.Size(24, 24);
+            this.ptbExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbExit.TabIndex = 1;
+            this.ptbExit.TabStop = false;
+            this.ptbExit.Click += new System.EventHandler(this.ptbExit_Click);
             // 
             // lblTitle
             // 
@@ -177,6 +177,9 @@
             this.lblTitle.Size = new System.Drawing.Size(91, 19);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Pizzaria C#";
+            this.lblTitle.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panTitleBar_MouseDoubleClick);
+            this.lblTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panTitleBar_MouseDown);
+            this.lblTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panTitleBar_MouseMove);
             // 
             // panPrincipal
             // 
@@ -283,7 +286,7 @@
             this.panEstoque.Controls.Add(this.ckbAcabando);
             this.panEstoque.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panEstoque.ForeColor = System.Drawing.Color.DimGray;
-            this.panEstoque.Location = new System.Drawing.Point(287, 360);
+            this.panEstoque.Location = new System.Drawing.Point(132, 248);
             this.panEstoque.Margin = new System.Windows.Forms.Padding(0);
             this.panEstoque.Name = "panEstoque";
             this.panEstoque.Size = new System.Drawing.Size(922, 583);
@@ -305,40 +308,6 @@
             this.dgvEstoque.Name = "dgvEstoque";
             this.dgvEstoque.Size = new System.Drawing.Size(594, 410);
             this.dgvEstoque.TabIndex = 2;
-            // 
-            // idEstoqueDataGridViewTextBoxColumn
-            // 
-            this.idEstoqueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idEstoqueDataGridViewTextBoxColumn.DataPropertyName = "IdEstoque";
-            this.idEstoqueDataGridViewTextBoxColumn.HeaderText = "IdEstoque";
-            this.idEstoqueDataGridViewTextBoxColumn.Name = "idEstoqueDataGridViewTextBoxColumn";
-            this.idEstoqueDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idIngredienteDataGridViewTextBoxColumn
-            // 
-            this.idIngredienteDataGridViewTextBoxColumn.DataPropertyName = "IdIngrediente";
-            this.idIngredienteDataGridViewTextBoxColumn.HeaderText = "IdIngrediente";
-            this.idIngredienteDataGridViewTextBoxColumn.Name = "idIngredienteDataGridViewTextBoxColumn";
-            this.idIngredienteDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // ingredienteDataGridViewTextBoxColumn
-            // 
-            this.ingredienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ingredienteDataGridViewTextBoxColumn.DataPropertyName = "Ingrediente";
-            this.ingredienteDataGridViewTextBoxColumn.HeaderText = "Ingrediente";
-            this.ingredienteDataGridViewTextBoxColumn.Name = "ingredienteDataGridViewTextBoxColumn";
-            this.ingredienteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantidadeDataGridViewTextBoxColumn
-            // 
-            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
-            this.quantidadeDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // estoqueModelBindingSource
-            // 
-            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
             // 
             // ckbAcabando
             // 
@@ -447,7 +416,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(72, 75);
+            this.label5.Location = new System.Drawing.Point(117, 75);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 23);
             this.label5.TabIndex = 20;
@@ -899,6 +868,40 @@
             this.tmPedidos.Interval = 1;
             this.tmPedidos.Tick += new System.EventHandler(this.tmPedidos_Tick);
             // 
+            // idEstoqueDataGridViewTextBoxColumn
+            // 
+            this.idEstoqueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idEstoqueDataGridViewTextBoxColumn.DataPropertyName = "IdEstoque";
+            this.idEstoqueDataGridViewTextBoxColumn.HeaderText = "IdEstoque";
+            this.idEstoqueDataGridViewTextBoxColumn.Name = "idEstoqueDataGridViewTextBoxColumn";
+            this.idEstoqueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idIngredienteDataGridViewTextBoxColumn
+            // 
+            this.idIngredienteDataGridViewTextBoxColumn.DataPropertyName = "IdIngrediente";
+            this.idIngredienteDataGridViewTextBoxColumn.HeaderText = "IdIngrediente";
+            this.idIngredienteDataGridViewTextBoxColumn.Name = "idIngredienteDataGridViewTextBoxColumn";
+            this.idIngredienteDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // ingredienteDataGridViewTextBoxColumn
+            // 
+            this.ingredienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ingredienteDataGridViewTextBoxColumn.DataPropertyName = "Ingrediente";
+            this.ingredienteDataGridViewTextBoxColumn.HeaderText = "Ingrediente";
+            this.ingredienteDataGridViewTextBoxColumn.Name = "ingredienteDataGridViewTextBoxColumn";
+            this.ingredienteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantidadeDataGridViewTextBoxColumn
+            // 
+            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
+            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
+            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
+            this.quantidadeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // estoqueModelBindingSource
+            // 
+            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -916,7 +919,7 @@
             this.panTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbSair)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).EndInit();
             this.panPrincipal.ResumeLayout(false);
             this.panPedido.ResumeLayout(false);
             this.panPedido.PerformLayout();
@@ -925,7 +928,6 @@
             this.panEstoque.ResumeLayout(false);
             this.panEstoque.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
             this.panPedidos.ResumeLayout(false);
             this.panPedidos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).EndInit();
@@ -943,6 +945,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -955,7 +958,7 @@
         private System.Windows.Forms.Panel panActionBar;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox ptbMenu;
-        private System.Windows.Forms.PictureBox ptbSair;
+        private System.Windows.Forms.PictureBox ptbExit;
         private System.Windows.Forms.PictureBox ptbMaxiRest;
         private System.Windows.Forms.PictureBox ptbMini;
         private System.Windows.Forms.Panel panSideBar;
