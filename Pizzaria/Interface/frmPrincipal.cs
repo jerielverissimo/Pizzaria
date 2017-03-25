@@ -513,20 +513,26 @@ namespace Pizzaria
 
             if (cmbPizza.Text != null)
             {
-                pedido.Pizzas.Add(new PedidoPizzaModel()
-                {
-                    IdPedido = PedidoBLL.PedidoDB.Count + 1,
-                    ComBorda = ckbBorda.Checked,
-                    IdPizza = (int)cmbPizza.SelectedValue,
-                    Pizza = PizzaBLL.GetPizzaById((int)cmbPizza.SelectedValue),
-                    Pedido = pedido,
-                    Quantidade = (int)numQtd.Value
-                });
-                PedidoBLL.PedidoDB.Add(pedido);
-                txtPedido.Text = pedido.NumeroPedido;
-                cmbPizza.SelectedIndex = -1;
+                try {
+                    pedido.Pizzas.Add(new PedidoPizzaModel()
+                    {
+                        IdPedido = PedidoBLL.PedidoDB.Count + 1,
+                        ComBorda = ckbBorda.Checked,
+                        IdPizza = (int)cmbPizza.SelectedValue,
+                        Pizza = PizzaBLL.GetPizzaById((int)cmbPizza.SelectedValue),
+                        Pedido = pedido,
+                        Quantidade = (int)numQtd.Value
+                    });
+                    PedidoBLL.PedidoDB.Add(pedido);
+                    txtPedido.Text = pedido.NumeroPedido;
+                    cmbPizza.SelectedIndex = -1;
 
-                cmbPedidos.Refresh();
+                    cmbPedidos.Refresh();
+                }
+                catch
+                {
+                    MessageBox.Show("Por favor, use um valor valido");
+                }
             }
             
         }
