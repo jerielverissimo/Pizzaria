@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Pizzaria.Controle;
+using Pizzaria.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +11,16 @@ namespace Pizzaria.Interface
 {
     class Notificacao 
     {
+        public static void notificacao_aviso(int ingrediente, System.Windows.Forms.Timer t)
+        {
+          var ingredi =IngredienteBLL.GetIngredienteById(ingrediente);
+            if (Convert.ToInt32(ingredi) == 98888)
+            {
+                t.Enabled = true;
 
+            }
+        }
+           
        
 
          // Para usar chama esse método e o primeiro parametro á a mensagem e o segundo é label lblAlert
