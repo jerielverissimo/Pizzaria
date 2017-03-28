@@ -530,7 +530,7 @@ namespace Pizzaria
                 //Faz novo pedido
                 pedido = new PedidoModel();
                 pedido.NumeroPedido = PedidoBLL.GetUltimoNumero();
-                pedido.IdPedido = PedidoBLL.PedidoDB.Count + 1;
+                pedido.IdPedido = PedidoBLL.PedidoDB.Count;
                 //Adicionar campo de observação
             }
             else
@@ -543,6 +543,7 @@ namespace Pizzaria
                     Notificacao.pushMessage("Por favor informe o pedido!", lblAlert, tmAlert, ptbAlert, panAlert);
                     return;
                 }
+
                 PedidoBLL.PedidoDB.RemoveAt(PedidoBLL.PedidoDB.ToList().FindIndex(x => x.NumeroPedido == txtPedido.Text));
             }
 
