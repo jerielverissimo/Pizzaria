@@ -844,6 +844,11 @@ namespace Pizzaria
             }
         }
 
+        private void ptbMini_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             txtSearch.BackColor = ColorTranslator.FromHtml("#A1887F");

@@ -42,6 +42,11 @@
             this.lblClear = new System.Windows.Forms.Label();
             this.panEstoque = new System.Windows.Forms.Panel();
             this.dgvEstoque = new System.Windows.Forms.DataGridView();
+            this.idEstoqueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idIngredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ckbAcabando = new System.Windows.Forms.CheckBox();
             this.panPedidos = new System.Windows.Forms.Panel();
             this.lblPedidos = new System.Windows.Forms.Label();
@@ -87,11 +92,6 @@
             this.tmEstoque = new System.Windows.Forms.Timer(this.components);
             this.atualizaHora = new System.Windows.Forms.Timer(this.components);
             this.tmPedidos = new System.Windows.Forms.Timer(this.components);
-            this.idEstoqueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idIngredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ingredienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estoqueModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaxiRest)).BeginInit();
@@ -101,6 +101,7 @@
             this.panNotify.SuspendLayout();
             this.panEstoque.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
             this.panPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).BeginInit();
@@ -114,7 +115,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panTitleBar
@@ -144,6 +144,7 @@
             this.ptbMini.Size = new System.Drawing.Size(24, 24);
             this.ptbMini.TabIndex = 3;
             this.ptbMini.TabStop = false;
+            this.ptbMini.Click += new System.EventHandler(this.ptbMini_Click);
             // 
             // ptbMaxiRest
             // 
@@ -311,6 +312,40 @@
             this.dgvEstoque.Name = "dgvEstoque";
             this.dgvEstoque.Size = new System.Drawing.Size(594, 277);
             this.dgvEstoque.TabIndex = 2;
+            // 
+            // idEstoqueDataGridViewTextBoxColumn
+            // 
+            this.idEstoqueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idEstoqueDataGridViewTextBoxColumn.DataPropertyName = "IdEstoque";
+            this.idEstoqueDataGridViewTextBoxColumn.HeaderText = "IdEstoque";
+            this.idEstoqueDataGridViewTextBoxColumn.Name = "idEstoqueDataGridViewTextBoxColumn";
+            this.idEstoqueDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idIngredienteDataGridViewTextBoxColumn
+            // 
+            this.idIngredienteDataGridViewTextBoxColumn.DataPropertyName = "IdIngrediente";
+            this.idIngredienteDataGridViewTextBoxColumn.HeaderText = "IdIngrediente";
+            this.idIngredienteDataGridViewTextBoxColumn.Name = "idIngredienteDataGridViewTextBoxColumn";
+            this.idIngredienteDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // ingredienteDataGridViewTextBoxColumn
+            // 
+            this.ingredienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ingredienteDataGridViewTextBoxColumn.DataPropertyName = "Ingrediente";
+            this.ingredienteDataGridViewTextBoxColumn.HeaderText = "Ingrediente";
+            this.ingredienteDataGridViewTextBoxColumn.Name = "ingredienteDataGridViewTextBoxColumn";
+            this.ingredienteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantidadeDataGridViewTextBoxColumn
+            // 
+            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
+            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
+            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
+            this.quantidadeDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // estoqueModelBindingSource
+            // 
+            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
             // 
             // ckbAcabando
             // 
@@ -898,40 +933,6 @@
             this.tmPedidos.Interval = 1;
             this.tmPedidos.Tick += new System.EventHandler(this.tmPedidos_Tick);
             // 
-            // idEstoqueDataGridViewTextBoxColumn
-            // 
-            this.idEstoqueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idEstoqueDataGridViewTextBoxColumn.DataPropertyName = "IdEstoque";
-            this.idEstoqueDataGridViewTextBoxColumn.HeaderText = "IdEstoque";
-            this.idEstoqueDataGridViewTextBoxColumn.Name = "idEstoqueDataGridViewTextBoxColumn";
-            this.idEstoqueDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idIngredienteDataGridViewTextBoxColumn
-            // 
-            this.idIngredienteDataGridViewTextBoxColumn.DataPropertyName = "IdIngrediente";
-            this.idIngredienteDataGridViewTextBoxColumn.HeaderText = "IdIngrediente";
-            this.idIngredienteDataGridViewTextBoxColumn.Name = "idIngredienteDataGridViewTextBoxColumn";
-            this.idIngredienteDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // ingredienteDataGridViewTextBoxColumn
-            // 
-            this.ingredienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ingredienteDataGridViewTextBoxColumn.DataPropertyName = "Ingrediente";
-            this.ingredienteDataGridViewTextBoxColumn.HeaderText = "Ingrediente";
-            this.ingredienteDataGridViewTextBoxColumn.Name = "ingredienteDataGridViewTextBoxColumn";
-            this.ingredienteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantidadeDataGridViewTextBoxColumn
-            // 
-            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
-            this.quantidadeDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // estoqueModelBindingSource
-            // 
-            this.estoqueModelBindingSource.DataSource = typeof(Pizzaria.Model.EstoqueModel);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -958,6 +959,7 @@
             this.panEstoque.ResumeLayout(false);
             this.panEstoque.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
             this.panPedidos.ResumeLayout(false);
             this.panPedidos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPedidos)).EndInit();
@@ -976,7 +978,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbNotify)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estoqueModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
